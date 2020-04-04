@@ -1,6 +1,9 @@
 $(document).ready(function(){
-  var country_api_url = "https://corona.lmao.ninja/countries?sort=cases";
-  var global_stats_api_url = "https://corona.lmao.ninja/all";
+  var countries_api_url = "https://corona.lmao.ninja/countries?sort=cases";
+  var global_summary_api_url = "https://corona.lmao.ninja/all";
+  var country_summary_api_base_url = "https://corona.lmao.ninja/countries/";
+  var country_historical_api_base_url = "https://corona.lmao.ninja/v2/historical/";
+
   var corona_global_data = {};
   var total_countries = 0;
   var total_deaths = 0;
@@ -107,7 +110,41 @@ $(document).ready(function(){
     });
   }
 
-  $.getJSON(global_stats_api_url).done(function(data){
+  function load_searched_country_data(country_code){
+    var country_summary_api_url = country_summary_api_base_url+country_code;
+    var country_historical_api_url = country_historical_api_base_url+country_code;
+
+    $.getJSON(country_summary_api_url).done(function(data){
+      var country_name_searched_country = data.country;
+      var country_flag_searched_country = get_country_flag(country_code);
+      var total_cases_searched_country=data.cases;
+      var today_cases_searched_country=data.todayCases;
+      var total_deaths_searched_country=data.deaths;
+      var today_deaths_searched_country=data.todayDeaths;
+      var total_recovered_searched_country=data.recovered;
+      var total_active_searched_country=data.active;
+      var total_critical_searched_country=data.critical;
+      var updated_at_searched_country=new Date(data.updated);
+
+      $("#country_name_searched_country").html(country_name_searched_country);
+      $("#country_flag_searched_country").attr("src", country_flag_searched_country);
+      $("#country_flag_searched_country").attr("alt", country_name_searched_country);
+
+      $("#total_active_searched_country").html(total_active_searched_country.toLocaleString());
+      $("#total_critical_searched_country").html(total_critical_searched_country.toLocaleString());
+      $("#total_cases_searched_country").html(total_cases_searched_country.toLocaleString());
+      $("#today_cases_searched_country").html(today_cases_searched_country.toLocaleString());
+      $("#total_deaths_searched_country").html(total_deaths_searched_country.toLocaleString());
+      $("#total_recovered_searched_country").html(total_recovered_searched_country.toLocaleString());
+      // $(".updated_at").html(updated_at.toLocaleString());
+      total_deaths_percent_searched_country = (total_deaths_searched_country/total_cases_searched_country)*100.0;
+      total_recovered_percent_searched_country = (total_recovered_searched_country/total_cases_searched_country)*100.0;
+      $("#total_deaths_percent_searched_country").html(total_deaths_percent_searched_country.toLocaleString());
+      $("#total_recovered_percent_searched_country").html(total_recovered_percent_searched_country.toLocaleString());
+    });
+  }
+
+  $.getJSON(global_summary_api_url).done(function(data){
     total_countries=data.affectedCountries;
     total_cases=data.cases;
     total_deaths=data.deaths;
@@ -124,7 +161,7 @@ $(document).ready(function(){
     $("#total_recovered_percent").html(total_recovered_percent.toLocaleString());
   });
 
-  $.getJSON(country_api_url).done(function(data){
+  $.getJSON(countries_api_url).done(function(data){
     $.each(data, function(i, item){
       if(item.country == "World"){
         return true;
@@ -215,7 +252,6 @@ $(document).ready(function(){
     set_map_data("#corona_world_map_active", colors_active);
     set_map_data("#corona_world_map_recovered", colors_recovered);
 
-
     highest_death_country_summary = highest_death_country+" ("+highest_death.toLocaleString()+")";
     $("#highest_death_country_summary").html(highest_death_country_summary);
     $("#today_cases").html(today_cases.toLocaleString());
@@ -229,11 +265,14 @@ $(document).ready(function(){
       country_name = countries[i][1];
       $("#country_search").append("<option value='"+country_short_code+"'>"+country_name+"</option>");
     }
+    var searched_country_code = $('#country_search').val();
+    load_searched_country_data(searched_country_code);
+
   });
 
   $('#country_search').on('change', function () {
-      var searched_country_code = $(this).val();
-      alert("You have searched for "+searched_country_code);
+    var searched_country_code = $(this).val();
+    load_searched_country_data(searched_country_code);
   });
 
   sizeMap();

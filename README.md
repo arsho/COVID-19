@@ -2,7 +2,7 @@
 
 A data visualization project to show current situation of COVID-19 worldwide.
 
-### Features
+## Features
 - Summary of worldwide status of COVID-19 specifying number of affected countries, total cases, total deaths and total recovered cases.
 - Sortable and instant searchable data table of all countries.
 - World map of confirmed cases.
@@ -10,7 +10,7 @@ A data visualization project to show current situation of COVID-19 worldwide.
 - World map of recovered cases.
 - Search details of a specific country.
 
-### Dependencies
+## Dependencies
 
 - [Bootstrap v4.4.1](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
 - [jQuery v3.4.1](https://jquery.com/)
@@ -19,12 +19,12 @@ A data visualization project to show current situation of COVID-19 worldwide.
 - [Font Awesome Free v5.13.0](https://fontawesome.com)
 - [Google Web Font: Source Sans Pro](https://fonts.google.com/specimen/Source+Sans+Pro)
 
-### Installation
+## Installation
 
 - Clone the repository.
 - The required JS/CSS files will be loaded from relevant CDN. No need to download the above dependencies locally.
 
-### Demonstration
+## Demonstration
 
 - Summary of worldwide COVID-19 status
 
@@ -42,6 +42,10 @@ A data visualization project to show current situation of COVID-19 worldwide.
 
 ![alt Worldmap of recovered cases](/screenshots/world_map_recovered_cases.png?style=center)
 
+- Search by country
+
+![alt Search by country](/screenshots/search_by_country.png?style=center)
+
 
 ## Support
 
@@ -51,7 +55,7 @@ Please [open an issue](https://github.com/arsho/COVID-19/issues/new) for support
 
 Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/arsho/COVID-19/compare/).
 
-### Thanks
+## Thanks
 
 - [NOVELCovid API](https://corona.lmao.ninja/)
 - [NC-19SRIM](https://www.smreza.com/projects/covid-19/)

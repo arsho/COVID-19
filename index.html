@@ -125,7 +125,7 @@
     <div class="container-fluid">
 
       <div class="row">
-        <div class="col-2">
+        <div class="col-md-2">
           <div class="list-group" id="list-tab" role="tablist">
             <a class="list-group-item list-group-item-action active" id="list-global-data-list" data-toggle="list" href="#list-global-data" role="tab" aria-controls="global-data">Global Data</a>
             <a class="list-group-item list-group-item-action" id="list-worldmap-cases-list" data-toggle="list" href="#list-worldmap-cases" role="tab" aria-controls="worldmap-cases">Worldmap by confirmed cases</a>
@@ -135,7 +135,7 @@
             <a class="list-group-item list-group-item-action" id="list-search-country-data-list" data-toggle="list" href="#list-search-country-data" role="tab" aria-controls="search-country-data">Search by country</a>
           </div>
         </div>
-        <div class="col-10" id="content">
+        <div class="col-md-10" id="content">
           <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="list-global-data" role="tabpanel" aria-labelledby="list-global-data-list">
               <div class="row">
@@ -232,73 +232,97 @@
                     </div>
                   </form>
                   <div id="country_search_result">
-                    <h3 class="center">
-                      Country Name
-                    </h3>
                     <div class="row mt-4 mb-6 center">
-                      <div class="col-sm-3">
-                        <div class="card bg-dark text-white shadow-lg rounded">
-                          <div class="card-body">
-                            <h5 class="card-title">Affected Countries</h5>
-                            <p class="card-text">
-                              <span id="total_countries_country">208</span>
-                            </p>
+                      <div class="col-md-12">
+                        <div class="card mb-3">
+                          <div class="card-header">
+                            <img src="" alt="" id="country_flag_searched_country" height="32px">
+                            <span id="country_name_searched_country"></span>
                           </div>
+                          <div class="card-body">
+                            <p class="card-text" id="country_details_searched_country">
+                            </p>
+
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <div class="card bg-dark text-white shadow-lg rounded">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Active Cases</h5>
+                                    <p class="card-text">
+                                      <span id="total_active_searched_country"></span>
+                                    </p>
+                                  </div>
+                                  <div class="card-footer">
+                                    <small>
+                                      Critical Cases: <span id="total_critical_searched_country"></span>
+                                    </small>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- ./col-sm-3 -->
+                              <div class="col-sm-3">
+                                <div class="card bg-info text-white shadow-lg rounded">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Total Cases</h5>
+                                    <p class="card-text">
+                                      <span id="total_cases_searched_country"></span>
+                                    </p>
+                                  </div>
+                                  <div class="card-footer">
+                                    <small>
+                                      Today's cases: <span id="today_cases_searched_country"></span>
+                                    </small>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- ./col-sm-3 -->
+                              <div class="col-sm-3">
+                                <div class="card bg-danger text-white shadow-lg rounded">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Total Deaths</h5>
+                                    <p class="card-text">
+                                      <span id="total_deaths_searched_country"></span>
+                                    </p>
+                                  </div>
+                                  <div class="card-footer">
+                                    <small>
+                                      Death rate: <span id="total_deaths_percent_searched_country"></span>%
+                                    </small>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- ./col-sm-3 -->
+                              <div class="col-sm-3">
+                                <div class="card bg-success text-white shadow-lg rounded">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Total Recovered</h5>
+                                    <p class="card-text">
+                                      <span id="total_recovered_searched_country"></span>
+                                    </p>
+                                  </div>
+                                  <div class="card-footer">
+                                    <small>
+                                      Recover rate: <span id="total_recovered_percent_searched_country"></span>%
+                                    </small>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- ./col-sm-3 -->
+
+                            </div>
+                            <!-- ./row in card body -->
+                          </div>
+                          <!-- ./card-body -->
                           <div class="card-footer">
-                            <small>
-                              Highest Deaths: <span id="highest_death_country_summary_country">Italy (15,362)</span>
+                            <small class="text-muted">
+                              Updated at: <span class="updated_at"></span>
                             </small>
                           </div>
+                          <!-- ./card-footer -->
                         </div>
+                        <!-- ./card -->
                       </div>
-                      <!-- ./col-sm-3 -->
-                      <div class="col-sm-3">
-                        <div class="card bg-info text-white shadow-lg rounded">
-                          <div class="card-body">
-                            <h5 class="card-title">Total Cases</h5>
-                            <p class="card-text">
-                              <span id="total_cases_country">1,169,262</span>
-                            </p>
-                          </div>
-                          <div class="card-footer">
-                            <small>
-                              Today's cases: <span id="today_cases_country">52,619</span>
-                            </small>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- ./col-sm-3 -->
-                      <div class="col-sm-3">
-                        <div class="card bg-danger text-white shadow-lg rounded">
-                          <div class="card-body">
-                            <h5 class="card-title">Total Deaths</h5>
-                            <p class="card-text">
-                              <span id="total_deaths_country">62,730</span>
-                            </p>
-                          </div>
-                          <div class="card-footer">
-                            <small>
-                              Death rate: <span id="total_deaths_percent_country">5.365</span>%
-                            </small>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="card bg-success text-white shadow-lg rounded">
-                          <div class="card-body">
-                            <h5 class="card-title">Total Recovered</h5>
-                            <p class="card-text">
-                              <span id="total_recovered_country">241,762</span>
-                            </p>
-                          </div>
-                          <div class="card-footer">
-                            <small>
-                              Recover rate: <span id="total_recovered_percent_country">20.676</span>%
-                            </small>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- ./col-sm-3 -->
+                      <!-- ./col-md-12 -->
                     </div>
                     <!-- ./row -->
                   </div>
@@ -316,7 +340,7 @@
 
     </div>
 
-    <footer class="footer mt-auto py-3">
+    <footer class="footer mt-3 py-3">
       <div class="container-fluid">
         <div class="float-left">
           Data Source: <a href="https://github.com/NovelCovid/API">NOVELCovid API</a>
