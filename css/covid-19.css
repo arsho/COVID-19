@@ -1,0 +1,24 @@
+body{
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.flag{
+  height: 30px;
+}
+#corona_country_table{
+  width: 100%;
+  text-align: center;
+}
+#corona_world_map{
+  margin: 20px auto;
+}
+#summary{
+  margin: 20px auto;
+  padding: 20px;
+}
+.center{
+  text-align: center;
+}
+.footer{
+  margin-top: 30px;
+}
