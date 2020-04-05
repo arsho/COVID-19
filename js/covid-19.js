@@ -44,7 +44,8 @@ $(document).ready(function(){
     containerHeight = (containerWidth / 3);
     $('.world_map').css({
       'width': containerWidth,
-      'height': containerHeight
+      'height': containerHeight,
+      'margin': "0 auto"
     });
   }
 
@@ -167,7 +168,6 @@ $(document).ready(function(){
       $("#total_recovered_percent_searched_country").html(total_recovered_percent_searched_country.toLocaleString());
     });
 
-
     /* Fetching the time series data of the searched country */
     $.getJSON(country_historical_api_url).done(function(data){
       var cases_by_date_searched_country = data.timeline.cases;
@@ -200,6 +200,8 @@ $(document).ready(function(){
       $("#first_death_date_searched_country").html(first_death_date_searched_country);
       $("#first_recovery_date_searched_country").html(first_recovery_date_searched_country);
     });
+    $("#country_search_result").fadeOut("slow");
+    $("#country_search_result").fadeIn("slow");
   }
 
   $.getJSON(global_summary_api_url).done(function(data){
