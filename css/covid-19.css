@@ -16,6 +16,10 @@ body{
   margin: 20px auto;
   padding: 20px;
 }
+#country_flag_searched_country{
+  height: 32px;
+}
+
 .center{
   text-align: center;
 }

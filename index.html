@@ -235,14 +235,11 @@
                     <div class="row mt-4 mb-6 center">
                       <div class="col-md-12">
                         <div class="card mb-3">
-                          <div class="card-header">
-                            <img src="" alt="" id="country_flag_searched_country" height="32px">
+                          <h5 class="card-header">
+                            <img src="" alt="" id="country_flag_searched_country">
                             <span id="country_name_searched_country"></span>
-                          </div>
+                          </h5>
                           <div class="card-body">
-                            <p class="card-text" id="country_details_searched_country">
-                            </p>
-
                             <div class="row">
                               <div class="col-sm-3">
                                 <div class="card bg-dark text-white shadow-lg rounded">
@@ -311,6 +308,18 @@
 
                             </div>
                             <!-- ./row in card body -->
+                            <p class="small py-3" id="country_details_searched_country">
+                              <span class="float-left">
+                                First Confirmed Case: <i class="fa fa-calendar"></i> <span id="first_case_date_searched_country"></span>
+                              </span>
+                              <span>
+                                First Death Case: <i class="fa fa-calendar"></i> <span id="first_death_date_searched_country"></span>
+                              </span>
+                              <span class="float-right">
+                                First Recovery Case: <i class="fa fa-calendar"></i> <span id="first_recovery_date_searched_country"></span>
+                              </span>
+                            </p>
+
                           </div>
                           <!-- ./card-body -->
                           <div class="card-footer">
@@ -325,58 +334,45 @@
                       <!-- ./col-md-12 -->
                     </div>
                     <!-- ./row -->
-                    <div class="container-fluid">
-                      <div class="row">
-                        <div class="col">
-                            First Confirmed Case: <span id="first_case_date_searched_country"></span>
-                        </div>
-                        <div class="col">
-                            First Death Confirmed: <span id="first_death_date_searched_country"></span>
-                        </div>
-                        <div class="col">
-                            First Recovery Date: <span id="first_recovery_date_searched_country"></span>
-                        </div>                      
-                      </div>
-                    </div>                  
-                  <!-- ./country_search_result -->
+                    <!-- ./country_search_result -->
+                  </div>
+                  <!-- ./col-md-12 -->
                 </div>
-                <!-- ./col-md-12 -->
+                <!-- ./row -->
               </div>
-              <!-- ./row -->
+              <!-- ./list-search-country-data -->
             </div>
-            <!-- ./list-search-country-data -->
           </div>
         </div>
+
+
       </div>
 
-
-    </div>
-
-    <footer class="footer mt-3 py-3">
-      <div class="container-fluid">
-        <div class="float-left">
-          Data Source: <a href="https://github.com/NovelCovid/API">NOVELCovid API</a>
+      <footer class="footer mt-3 py-3">
+        <div class="container-fluid">
+          <div class="float-left">
+            Data Source: <a href="https://github.com/NovelCovid/API">NOVELCovid API</a>
+          </div>
+          <div class="float-right">
+            Developed with <i class="fas fa-heart"></i> by <a href="https://arshovon.com/" title="Ahmedur Rahman Shovon">Ahmedur Rahman Shovon</a>
+          </div>
         </div>
-        <div class="float-right">
-          Developed with <i class="fas fa-heart"></i> by <a href="https://arshovon.com/" title="Ahmedur Rahman Shovon">Ahmedur Rahman Shovon</a>
-        </div>
-      </div>
-    </footer>
-    <!-- ./footer -->
+      </footer>
+      <!-- ./footer -->
 
 
-  </main>
-  <!-- Load jQuery from CDN -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- Load Boostrap from CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <!-- Load data table JS from CDN -->
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-  <!-- Load jqvmap JS and World Data from CDN -->
-  <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.world.js"></script>
-  <!-- Load jqvmap JS and World Data from CDN -->
-  <script src="js/covid-19.js"></script>
-</body>
-</html>
+    </main>
+    <!-- Load jQuery from CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Load Boostrap from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- Load data table JS from CDN -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <!-- Load jqvmap JS and World Data from CDN -->
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.world.js"></script>
+    <!-- Load jqvmap JS and World Data from CDN -->
+    <script src="js/covid-19.js"></script>
+  </body>
+  </html>

@@ -114,6 +114,7 @@ $(document).ready(function(){
     var country_summary_api_url = country_summary_api_base_url+country_code;
     var country_historical_api_url = country_historical_api_base_url+country_code+"?lastdays=1000";
 
+    /* Fetching the sumamry data of the searched country */
     $.getJSON(country_summary_api_url).done(function(data){
       var country_name_searched_country = data.country;
       var country_flag_searched_country = get_country_flag(country_code);
@@ -143,33 +144,40 @@ $(document).ready(function(){
       $("#total_recovered_percent_searched_country").html(total_recovered_percent_searched_country.toLocaleString());
     });
 
-    $.getJSON(country_historical_api_url).done(function(data){
-      var cases_by_date_searched_country = data.timeline.cases
-      var deaths_by_date_searched_country = data.timeline.deaths
-      var recoveries_by_date_searched_country = data.timeline.recovered
 
-      $.each(cases_by_date_searched_country, function(i, item){        
-        if(cases_by_date_searched_country[i]>0){          
-          var first_case_date_searched_country= i;     
-          $("#first_case_date_searched_country").html(first_case_date_searched_country.toLocaleString());
+    /* Fetching the time series data of the searched country */
+    $.getJSON(country_historical_api_url).done(function(data){
+      var cases_by_date_searched_country = data.timeline.cases;
+      var deaths_by_date_searched_country = data.timeline.deaths;
+      var recovered_by_date_searched_country = data.timeline.recovered;
+      var first_case_date_searched_country = null;
+      var first_death_date_searched_country = null;
+      var first_recovery_date_searched_country = null;
+
+      $.each(cases_by_date_searched_country, function(key, value){
+        if(value>0){
+          first_case_date_searched_country = key;
           return false;
         }
-      })
-      $.each(deaths_by_date_searched_country, function(i, item){
-        if(deaths_by_date_searched_country[i]>0){          
-          var first_death_date_searched_country= i;
-          $("#first_death_date_searched_country").html(first_death_date_searched_country.toLocaleString());
+      });
+      $.each(deaths_by_date_searched_country, function(key, value){
+        if(value>0){
+          first_death_date_searched_country = key;
           return false;
         }
-      })
-      $.each(recoveries_by_date_searched_country, function(i, item){
-        if(recoveries_by_date_searched_country[i]>0){          
-          var first_recovery_date_searched_country= i;
-          $("#first_recovery_date_searched_country").html(first_recovery_date_searched_country.toLocaleString());
+      });
+      $.each(recovered_by_date_searched_country, function(key, value){
+        if(value>0){
+          first_recovery_date_searched_country = key;
           return false;
         }
-      })
-    })
+      });
+
+      $("#first_case_date_searched_country").html(first_case_date_searched_country);
+      $("#first_death_date_searched_country").html(first_death_date_searched_country);
+      $("#first_recovery_date_searched_country").html(first_recovery_date_searched_country);
+
+    });
   }
 
   $.getJSON(global_summary_api_url).done(function(data){

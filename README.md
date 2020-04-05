@@ -55,8 +55,25 @@ Please [open an issue](https://github.com/arsho/COVID-19/issues/new) for support
 
 Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/arsho/COVID-19/compare/).
 
+### Git methods
+
+- To check local changes:
+  ```
+  git status -s
+  ```
+- To fetch from upstream repository:
+  ```
+  git fetch
+  ```
+- To reset local files to upstream repository `master` branch after fetching the changes:
+  ```
+  git reset --hard origin/master
+  ```
+
+
 ## Thanks
 
 - [NOVELCovid API](https://corona.lmao.ninja/)
 - [NC-19SRIM](https://www.smreza.com/projects/covid-19/)
 - [NOVEL CORONA VIRUS DISEASE \(COVID-19\)](http://corona.drmwahiduzzaman.info/)
+- [jQuery $.each method](https://api.jquery.com/jquery.each/)
