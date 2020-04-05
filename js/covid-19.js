@@ -14,6 +14,30 @@ $(document).ready(function(){
   var highest_death_country = "";
   var countries = [];
 
+  /**
+  * Creates a date object from a specific formatted string
+  * @param {STRING} date_string: e.g. "1/22/20" where parts are month, date, year
+  * @return {STRING} date_string: e.g. "22/01/2020" where parts are DD/MM/YYYY
+  */
+  function get_formatted_date(date_string){
+    var parts = date_string.split('/');
+    // Please pay attention to the month (parts[0]); JavaScript counts months from 0:
+    // January - 0, February - 1, etc.
+    var date_object = new Date("20"+parts[2], parts[0] - 1, parts[1]);
+    var dd = date_object.getDate();
+    var mm = date_object.getMonth()+1;
+    var yyyy = date_object.getFullYear();
+    if(dd<10)
+    {
+      dd='0'+dd;
+    }
+    if(mm<10)
+    {
+      mm='0'+mm;
+    }
+    return dd+'/'+mm+'/'+yyyy;
+  }
+
   function sizeMap() {
     $page_width = $('#content').width();
     var containerWidth = $page_width-($page_width/10.0),
@@ -137,7 +161,6 @@ $(document).ready(function(){
       $("#today_cases_searched_country").html(today_cases_searched_country.toLocaleString());
       $("#total_deaths_searched_country").html(total_deaths_searched_country.toLocaleString());
       $("#total_recovered_searched_country").html(total_recovered_searched_country.toLocaleString());
-      // $(".updated_at").html(updated_at.toLocaleString());
       total_deaths_percent_searched_country = (total_deaths_searched_country/total_cases_searched_country)*100.0;
       total_recovered_percent_searched_country = (total_recovered_searched_country/total_cases_searched_country)*100.0;
       $("#total_deaths_percent_searched_country").html(total_deaths_percent_searched_country.toLocaleString());
@@ -156,19 +179,19 @@ $(document).ready(function(){
 
       $.each(cases_by_date_searched_country, function(key, value){
         if(value>0){
-          first_case_date_searched_country = key;
+          first_case_date_searched_country = get_formatted_date(key);
           return false;
         }
       });
       $.each(deaths_by_date_searched_country, function(key, value){
         if(value>0){
-          first_death_date_searched_country = key;
+          first_death_date_searched_country = get_formatted_date(key);
           return false;
         }
       });
       $.each(recovered_by_date_searched_country, function(key, value){
         if(value>0){
-          first_recovery_date_searched_country = key;
+          first_recovery_date_searched_country = get_formatted_date(key);
           return false;
         }
       });
@@ -176,7 +199,6 @@ $(document).ready(function(){
       $("#first_case_date_searched_country").html(first_case_date_searched_country);
       $("#first_death_date_searched_country").html(first_death_date_searched_country);
       $("#first_recovery_date_searched_country").html(first_recovery_date_searched_country);
-
     });
   }
 

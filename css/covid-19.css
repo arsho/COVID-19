@@ -5,17 +5,6 @@ body{
 .flag{
   height: 30px;
 }
-#corona_country_table{
-  width: 100%;
-  text-align: center;
-}
-#corona_world_map{
-  margin: 20px auto;
-}
-#summary{
-  margin: 20px auto;
-  padding: 20px;
-}
 #country_flag_searched_country{
   height: 32px;
 }
