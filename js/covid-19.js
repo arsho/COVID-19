@@ -112,7 +112,7 @@ $(document).ready(function(){
 
   function load_searched_country_data(country_code){
     var country_summary_api_url = country_summary_api_base_url+country_code;
-    var country_historical_api_url = country_historical_api_base_url+country_code;
+    var country_historical_api_url = country_historical_api_base_url+country_code+"?lastdays=1000";
 
     $.getJSON(country_summary_api_url).done(function(data){
       var country_name_searched_country = data.country;
@@ -142,6 +142,34 @@ $(document).ready(function(){
       $("#total_deaths_percent_searched_country").html(total_deaths_percent_searched_country.toLocaleString());
       $("#total_recovered_percent_searched_country").html(total_recovered_percent_searched_country.toLocaleString());
     });
+
+    $.getJSON(country_historical_api_url).done(function(data){
+      var cases_by_date_searched_country = data.timeline.cases
+      var deaths_by_date_searched_country = data.timeline.deaths
+      var recoveries_by_date_searched_country = data.timeline.recovered
+
+      $.each(cases_by_date_searched_country, function(i, item){        
+        if(cases_by_date_searched_country[i]>0){          
+          var first_case_date_searched_country= i;     
+          $("#first_case_date_searched_country").html(first_case_date_searched_country.toLocaleString());
+          return false;
+        }
+      })
+      $.each(deaths_by_date_searched_country, function(i, item){
+        if(deaths_by_date_searched_country[i]>0){          
+          var first_death_date_searched_country= i;
+          $("#first_death_date_searched_country").html(first_death_date_searched_country.toLocaleString());
+          return false;
+        }
+      })
+      $.each(recoveries_by_date_searched_country, function(i, item){
+        if(recoveries_by_date_searched_country[i]>0){          
+          var first_recovery_date_searched_country= i;
+          $("#first_recovery_date_searched_country").html(first_recovery_date_searched_country.toLocaleString());
+          return false;
+        }
+      })
+    })
   }
 
   $.getJSON(global_summary_api_url).done(function(data){
