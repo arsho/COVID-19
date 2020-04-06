@@ -16,6 +16,8 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
   <!-- Load jqvmap CSS from CDN -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jqvmap.min.css">
+  <!-- Load ChartJS CSS from CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
   <!-- Load Google web font -->
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
   <!-- Load custom CSS -->
@@ -95,23 +97,7 @@
               <section class="jumbotron text-center">
                 <div class="container-fluid">
                   <div class="row">
-                    <div class="col-sm-3">
-                      <div class="card bg-dark text-white shadow-lg rounded">
-                        <div class="card-body">
-                          <h5 class="card-title">Affected Countries</h5>
-                          <p class="card-text">
-                            <span id="total_countries"></span>
-                          </p>
-                        </div>
-                        <div class="card-footer">
-                          <small>
-                            Highest Deaths: <span id="highest_death_country_summary"></span>
-                          </small>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- ./col-sm-3 -->
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                       <div class="card bg-info text-white shadow-lg rounded">
                         <div class="card-body">
                           <h5 class="card-title">Total Cases</h5>
@@ -126,39 +112,95 @@
                         </div>
                       </div>
                     </div>
-                    <!-- ./col-sm-3 -->
-                    <div class="col-sm-3">
+                    <!-- ./col-sm-2 -->
+                    <div class="col-sm-2">
                       <div class="card bg-danger text-white shadow-lg rounded">
                         <div class="card-body">
                           <h5 class="card-title">Total Deaths</h5>
                           <p class="card-text">
                             <span id="total_deaths"></span>
+                            <small>
+                              (<span id="total_deaths_percent"></span>%)
+                            </small>
                           </p>
                         </div>
                         <div class="card-footer">
                           <small>
-                            Death rate: <span id="total_deaths_percent"></span>%
+                            Today's death count: <span id="today_deaths"></span>
                           </small>
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-3">
+                    <!-- ./col-sm-2 -->
+                    <div class="col-sm-2">
+                      <div class="card bg-dark text-white shadow-lg rounded">
+                        <div class="card-body">
+                          <h5 class="card-title">Cases Per Million</h5>
+                          <p class="card-text">
+                            <span id="total_cases_per_million"></span>
+                          </p>
+                        </div>
+                        <div class="card-footer">
+                          <small>
+                            Deaths Per Million: <span id="total_deaths_per_million"></span>
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- ./col-sm-2 -->
+                    <div class="col-sm-2">
                       <div class="card bg-success text-white shadow-lg rounded">
                         <div class="card-body">
                           <h5 class="card-title">Total Recovered</h5>
                           <p class="card-text">
                             <span id="total_recovered"></span>
+                            <small>
+                              (<span id="total_recovered_percent"></span>%)
+                            </small>
                           </p>
                         </div>
                         <div class="card-footer">
                           <small>
-                            Recover rate: <span id="total_recovered_percent"></span>%
+                            Affected Countries: <span id="total_countries"></span>
                           </small>
                         </div>
                       </div>
                     </div>
-                    <!-- ./col-sm-3 -->
+                    <!-- ./col-sm-2 -->
+                    <div class="col-sm-2">
+                      <div class="card bg-warning text-white shadow-lg rounded">
+                        <div class="card-body">
+                          <h5 class="card-title">Active Cases</h5>
+                          <p class="card-text">
+                            <span id="total_active"></span>
+                          </p>
+                        </div>
+                        <div class="card-footer">
+                          <small>
+                            Critical cases: <span id="total_critical"></span>
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- ./col-sm-2 -->
+                    <div class="col-sm-2">
+                      <div class="card bg-secondary text-white shadow-lg rounded">
+                        <div class="card-body">
+                          <h5 class="card-title">Total Tests</h5>
+                          <p class="card-text">
+                            <span id="total_tests"></span>
+                          </p>
+                        </div>
+                        <div class="card-footer">
+                          <small>
+                            Tests per million: <span id="total_tests_per_million"></span>
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- ./col-sm-2 -->
                   </div>
+                  <!-- ./row -->
 
                   <div class="alert small mt-4 p-0">
                     <div class="float-left m-0 p-0">
@@ -168,6 +210,8 @@
                       Data Source: <a href="https://github.com/NovelCovid/API">NOVELCovid API</a>
                     </div>
                   </div>
+                  <!-- ./alert -->
+
                 </div>
               </section>
             </div>
@@ -192,14 +236,16 @@
                           <th class="no-sort">Flag</th>
                           <th>Country</th>
                           <th>Cases</th>
-                          <th>Today Cases</th>
+                          <th class="table-info">Today Cases</th>
+                          <th>Cases / Million</th>
                           <th>Deaths</th>
-                          <th>Today Deaths</th>
+                          <th class="table-danger">Today Deaths</th>
+                          <th>Deaths / Million</th>
+                          <th>Tests</th>
+                          <th>Tests / Million</th>
                           <th>Recovered</th>
                           <th>Active</th>
                           <th>Critical</th>
-                          <th>Cases / Million</th>
-                          <th>Deaths / Million</th>
                         </tr>
                       </thead>
                       <tbody id="corona_country_rows">
@@ -305,7 +351,7 @@
                   </div>
 
                   <div id="country_search_result">
-                    <div class="row mt-4 mb-6 center">
+                    <div class="row mt-4 center">
                       <div class="col-md-12">
                         <div class="card mb-3">
                           <h5 class="card-header">
@@ -314,23 +360,7 @@
                           </h5>
                           <div class="card-body">
                             <div class="row">
-                              <div class="col-sm-3">
-                                <div class="card bg-dark text-white shadow-lg rounded">
-                                  <div class="card-body">
-                                    <h5 class="card-title">Active Cases</h5>
-                                    <p class="card-text">
-                                      <span id="total_active_searched_country"></span>
-                                    </p>
-                                  </div>
-                                  <div class="card-footer">
-                                    <small>
-                                      Critical Cases: <span id="total_critical_searched_country"></span>
-                                    </small>
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- ./col-sm-3 -->
-                              <div class="col-sm-3">
+                              <div class="col-sm-2">
                                 <div class="card bg-info text-white shadow-lg rounded">
                                   <div class="card-body">
                                     <h5 class="card-title">Total Cases</h5>
@@ -345,24 +375,44 @@
                                   </div>
                                 </div>
                               </div>
-                              <!-- ./col-sm-3 -->
-                              <div class="col-sm-3">
+                              <!-- ./col-sm-2 -->
+                              <div class="col-sm-2">
                                 <div class="card bg-danger text-white shadow-lg rounded">
                                   <div class="card-body">
                                     <h5 class="card-title">Total Deaths</h5>
                                     <p class="card-text">
                                       <span id="total_deaths_searched_country"></span>
+                                      <small>
+                                        (<span id="total_deaths_percent_searched_country"></span>%)
+                                      </small>
                                     </p>
                                   </div>
                                   <div class="card-footer">
                                     <small>
-                                      Death rate: <span id="total_deaths_percent_searched_country"></span>%
+                                      Today's death count: <span id="today_deaths_searched_country"></span>
                                     </small>
                                   </div>
                                 </div>
                               </div>
-                              <!-- ./col-sm-3 -->
-                              <div class="col-sm-3">
+                              <!-- ./col-sm-2 -->
+                              <div class="col-sm-2">
+                                <div class="card bg-dark text-white shadow-lg rounded">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Cases Per Million</h5>
+                                    <p class="card-text">
+                                      <span id="total_cases_per_million_searched_country"></span>
+                                    </p>
+                                  </div>
+                                  <div class="card-footer">
+                                    <small>
+                                      Deaths Per Million: <span id="total_deaths_per_million_searched_country"></span>
+                                    </small>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- ./col-sm-2 -->
+
+                              <div class="col-sm-2">
                                 <div class="card bg-success text-white shadow-lg rounded">
                                   <div class="card-body">
                                     <h5 class="card-title">Total Recovered</h5>
@@ -377,8 +427,39 @@
                                   </div>
                                 </div>
                               </div>
-                              <!-- ./col-sm-3 -->
-
+                              <!-- ./col-sm-2 -->
+                              <div class="col-sm-2">
+                                <div class="card bg-warning text-white shadow-lg rounded">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Active Cases</h5>
+                                    <p class="card-text">
+                                      <span id="total_active_searched_country"></span>
+                                    </p>
+                                  </div>
+                                  <div class="card-footer">
+                                    <small>
+                                      Critical Cases: <span id="total_critical_searched_country"></span>
+                                    </small>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- ./col-sm-2 -->
+                              <div class="col-sm-2">
+                                <div class="card bg-secondary text-white shadow-lg rounded">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Total Tests</h5>
+                                    <p class="card-text">
+                                      <span id="total_tests_searched_country"></span>
+                                    </p>
+                                  </div>
+                                  <div class="card-footer">
+                                    <small>
+                                      Tests per million: <span id="total_tests_per_million_searched_country"></span>
+                                    </small>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- ./col-sm-2 -->
                             </div>
                             <!-- ./row in card body -->
                             <p class="small py-3" id="country_details_searched_country">
@@ -392,6 +473,15 @@
                                 First Recovery Case: <i class="fa fa-calendar"></i> <span id="first_recovery_date_searched_country"></span>
                               </span>
                             </p>
+
+                            <div class="row mb-4">
+                              <div class="col-md-12">
+                                <canvas id="country_chart"></canvas>
+                                <!-- ./country_chart -->
+                              </div>
+                              <!-- ./col-md-12 -->
+                            </div>
+
 
                           </div>
                           <!-- ./card-body -->
@@ -407,6 +497,9 @@
                       <!-- ./col-md-12 -->
                     </div>
                     <!-- ./row -->
+
+
+                    <!-- ./chart ./row -->
                     <!-- ./country_search_result -->
                   </div>
                   <!-- ./col-md-12 -->
@@ -443,7 +536,8 @@
   <!-- Load jqvmap JS and World Data from CDN -->
   <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.min.js"></script>
   <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.world.js"></script>
-  <!-- Load jqvmap JS and World Data from CDN -->
+  <!-- Load ChartJS Bundle with Moment JS from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js" integrity="sha256-TQq84xX6vkwR0Qs1qH5ADkP+MvH0W+9E7TdHJsoIQiM=" crossorigin="anonymous"></script>
   <script src="js/covid-19.js"></script>
 </body>
 </html>
