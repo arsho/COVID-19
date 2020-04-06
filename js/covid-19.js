@@ -10,6 +10,13 @@ $(document).ready(function(){
   var total_cases = 0;
   var total_recovered = 0;
   var today_cases = 0;
+  var today_deaths = 0;
+  var total_active = null;
+  var total_critical = null;
+  var total_tests = null;
+  var total_cases_per_million = null;
+  var total_deaths_per_million = null;
+  var total_tests_per_million = null;
   var highest_death = 0;
   var highest_death_country = "";
   var countries = [];
@@ -135,9 +142,91 @@ $(document).ready(function(){
     });
   }
 
+  function set_country_chart_data(country, html_id, labels, confirmed_cases, death_cases, recovered_cases){
+    var data = {
+      labels: labels,
+      datasets: [{
+        label: 'Confirmed Cases',
+        backgroundColor: "#17a2b8",
+        borderColor: "#17a2b8",
+        data: confirmed_cases,
+        fill: false,
+        pointRadius: 5,
+        pointHoverRadius: 10,
+      }, {
+        label: 'Death Cases',
+        fill: false,
+        backgroundColor: "#dc3545",
+        borderColor: "#dc3545",
+        data: death_cases,
+        pointRadius: 5,
+        pointHoverRadius: 10,
+      }, {
+        label: 'Recovered Cases',
+        fill: false,
+        backgroundColor: "#28a745",
+        borderColor: "#28a745",
+        data: recovered_cases,
+        pointRadius: 5,
+        pointHoverRadius: 10,
+      }]
+    }
+    var config = {
+      type: 'line',
+      data: data,
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        aspectRatio: 3,
+        title: {
+          display: true,
+          text: 'COVID-19 Scenario in '+country
+        },
+        tooltips: {
+          mode: 'index',
+          intersect: false,
+        },
+        hover: {
+          mode: 'average',
+          intersect: false
+        },
+        scales: {
+          xAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Date'
+            }
+          }],
+          yAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Number of Cases'
+            }
+          }]
+        }
+      }
+    };
+
+    var ctx = document.getElementById(html_id).getContext('2d');
+    if(window.country_chart_canvas != undefined){
+      window.country_chart_canvas.destroy();
+    }
+    window.country_chart_canvas = new Chart(ctx, config);
+  }
+
   function load_searched_country_data(country_code){
     var country_summary_api_url = country_summary_api_base_url+country_code;
     var country_historical_api_url = country_historical_api_base_url+country_code+"?lastdays=1000";
+    var chart_labels = [];
+    var confirmed_series = [];
+    var death_series = [];
+    var recovered_series = [];
+    var found_first_case_date = false;
+    var found_first_death_date = false;
+    var found_first_recovery_data = false;
+
 
     /* Fetching the sumamry data of the searched country */
     $.getJSON(country_summary_api_url).done(function(data){
@@ -151,6 +240,12 @@ $(document).ready(function(){
       var total_active_searched_country=data.active;
       var total_critical_searched_country=data.critical;
       var updated_at_searched_country=new Date(data.updated);
+      var total_tests_searched_country=data.tests;
+      var total_tests_per_million_searched_country=data.testsPerOneMillion;
+      var total_cases_per_million_searched_country=data.casesPerOneMillion;
+      var total_deaths_per_million_searched_country=data.deathsPerOneMillion;
+
+
 
       $("#country_name_searched_country").html(country_name_searched_country);
       $("#country_flag_searched_country").attr("src", country_flag_searched_country);
@@ -161,44 +256,72 @@ $(document).ready(function(){
       $("#total_cases_searched_country").html(total_cases_searched_country.toLocaleString());
       $("#today_cases_searched_country").html(today_cases_searched_country.toLocaleString());
       $("#total_deaths_searched_country").html(total_deaths_searched_country.toLocaleString());
+      $("#today_deaths_searched_country").html(today_deaths_searched_country.toLocaleString());
       $("#total_recovered_searched_country").html(total_recovered_searched_country.toLocaleString());
       total_deaths_percent_searched_country = (total_deaths_searched_country/total_cases_searched_country)*100.0;
       total_recovered_percent_searched_country = (total_recovered_searched_country/total_cases_searched_country)*100.0;
       $("#total_deaths_percent_searched_country").html(total_deaths_percent_searched_country.toLocaleString());
       $("#total_recovered_percent_searched_country").html(total_recovered_percent_searched_country.toLocaleString());
+      $("#total_cases_per_million_searched_country").html(total_cases_per_million_searched_country.toLocaleString());
+      $("#total_deaths_per_million_searched_country").html(total_deaths_per_million_searched_country.toLocaleString());
+      $("#total_tests_searched_country").html(total_tests_searched_country.toLocaleString());
+      $("#total_tests_per_million_searched_country").html(total_tests_per_million_searched_country.toLocaleString());
+
     });
 
     /* Fetching the time series data of the searched country */
     $.getJSON(country_historical_api_url).done(function(data){
+      var country_name_searched_country = data.country;
       var cases_by_date_searched_country = data.timeline.cases;
       var deaths_by_date_searched_country = data.timeline.deaths;
       var recovered_by_date_searched_country = data.timeline.recovered;
       var first_case_date_searched_country = null;
       var first_death_date_searched_country = null;
       var first_recovery_date_searched_country = null;
+      // We will show the chart only after the first confirmed case date
+      var first_confirmed_case_index = 0;
+      var counter = 0;
 
       $.each(cases_by_date_searched_country, function(key, value){
-        if(value>0){
+        chart_labels.push(get_formatted_date(key));
+        confirmed_series.push(value);
+        if(found_first_case_date==false && value>0){
           first_case_date_searched_country = get_formatted_date(key);
-          return false;
+          found_first_case_date = true;
+          first_confirmed_case_index = counter;
         }
+        counter++;
       });
+
       $.each(deaths_by_date_searched_country, function(key, value){
-        if(value>0){
+        death_series.push(value);
+        if(found_first_death_date == false && value>0){
           first_death_date_searched_country = get_formatted_date(key);
-          return false;
+          found_first_death_date = true;
         }
       });
+
       $.each(recovered_by_date_searched_country, function(key, value){
-        if(value>0){
+        recovered_series.push(value);
+        if(found_first_recovery_data == false && value>0){
           first_recovery_date_searched_country = get_formatted_date(key);
-          return false;
+          found_first_recovery_data = true;
         }
       });
 
       $("#first_case_date_searched_country").html(first_case_date_searched_country);
       $("#first_death_date_searched_country").html(first_death_date_searched_country);
       $("#first_recovery_date_searched_country").html(first_recovery_date_searched_country);
+
+      // Strip the series and chart labels to have data only after first confirmed case date
+      chart_labels.splice(0, first_confirmed_case_index);
+      confirmed_series.splice(0, first_confirmed_case_index);
+      death_series.splice(0, first_confirmed_case_index);
+      recovered_series.splice(0, first_confirmed_case_index);
+
+
+      set_country_chart_data(country_name_searched_country, "country_chart", chart_labels, confirmed_series, death_series, recovered_series);
+
     });
     $("#country_search_result").fadeOut("slow");
     $("#country_search_result").fadeIn("slow");
@@ -209,11 +332,31 @@ $(document).ready(function(){
     total_cases=data.cases;
     total_deaths=data.deaths;
     total_recovered=data.recovered;
+    total_critical = data.critical;
+    total_active = data.active;
+    total_tests = data.tests;
+    total_cases_per_million = data.casesPerOneMillion;
+    total_deaths_per_million = data.deathsPerOneMillion;
+    total_tests_per_million = data.testsPerOneMillion;
+    today_cases = data.todayCases;
+    today_deaths = data.todayDeaths;
+
+
     updated_at=new Date(data.updated);
     $("#total_countries").html(total_countries.toLocaleString());
     $("#total_cases").html(total_cases.toLocaleString());
     $("#total_deaths").html(total_deaths.toLocaleString());
     $("#total_recovered").html(total_recovered.toLocaleString());
+    $("#total_deaths").html(total_deaths.toLocaleString());
+    $("#total_recovered").html(total_recovered.toLocaleString());
+    $("#total_active").html(total_active.toLocaleString());
+    $("#total_critical").html(total_critical.toLocaleString());
+    $("#total_tests").html(total_tests.toLocaleString());
+    $("#total_tests_per_million").html(total_tests_per_million.toLocaleString());
+    $("#total_cases_per_million").html(total_cases_per_million.toLocaleString());
+    $("#total_deaths_per_million").html(total_deaths_per_million.toLocaleString());
+    $("#today_cases").html(today_cases.toLocaleString());
+    $("#today_deaths").html(today_deaths.toLocaleString());
     $(".updated_at").html(updated_at.toLocaleString());
     total_deaths_percent = (total_deaths/total_cases)*100.0;
     total_recovered_percent = (total_recovered/total_cases)*100.0;
@@ -227,13 +370,19 @@ $(document).ready(function(){
         return true;
       }
       corona_global_data[item.countryInfo.iso2] = {
-        "deaths":item.deaths,
         "country": item.country,
         "cases":item.cases,
+        "today_cases":item.todayCases,
+        "deaths":item.deaths,
+        "today_deaths":item.todayDeaths,
         "recovered":item.recovered,
-        "active":item.active
+        "active":item.active,
+        "critical":item.critical,
+        "tests":item.tests,
+        "tests_per_million":item.testsPerOneMillion,
+        "cases_per_million":item.casesPerOneMillion,
+        "deaths_per_million":item.deathsPerOneMillion
       }
-      today_cases += item.todayCases;
 
       var country_row = "<tr>";
       country_row += "<td>";
@@ -257,16 +406,32 @@ $(document).ready(function(){
       country_row += item.cases.toLocaleString();
       country_row += "</td>";
 
-      country_row += "<td>";
+      country_row += "<td class='table-info'>";
       country_row += item.todayCases.toLocaleString();
+      country_row += "</td>";
+
+      country_row += "<td>";
+      country_row += item.casesPerOneMillion;
       country_row += "</td>";
 
       country_row += "<td>";
       country_row += item.deaths.toLocaleString();
       country_row += "</td>";
 
-      country_row += "<td>";
+      country_row += "<td class='table-danger'>";
       country_row += item.todayDeaths.toLocaleString();
+      country_row += "</td>";
+
+      country_row += "<td>";
+      country_row += item.deathsPerOneMillion;
+      country_row += "</td>";
+
+      country_row += "<td>";
+      country_row += item.tests.toLocaleString();
+      country_row += "</td>";
+
+      country_row += "<td>";
+      country_row += item.testsPerOneMillion.toLocaleString();
       country_row += "</td>";
 
       country_row += "<td>";
@@ -279,14 +444,6 @@ $(document).ready(function(){
 
       country_row += "<td>";
       country_row += item.critical.toLocaleString();
-      country_row += "</td>";
-
-      country_row += "<td>";
-      country_row += item.casesPerOneMillion;
-      country_row += "</td>";
-
-      country_row += "<td>";
-      country_row += item.deathsPerOneMillion;
       country_row += "</td>";
 
       country_row += "</tr>";
@@ -314,10 +471,11 @@ $(document).ready(function(){
 
     highest_death_country_summary = highest_death_country+" ("+highest_death.toLocaleString()+")";
     $("#highest_death_country_summary").html(highest_death_country_summary);
-    $("#today_cases").html(today_cases.toLocaleString());
 
     countries.sort(function(a,b){
-      return a[1] - b[1];
+      if (a[1] < b[1]) return -1;
+      else if (a[1] > b[1]) return 1;
+      return 0;
     });
 
     for(var i=0;i<countries.length;i++){
