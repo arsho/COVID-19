@@ -479,9 +479,13 @@ $(document).ready(function(){
     });
 
     for(var i=0;i<countries.length;i++){
+      var selected = "";
       country_short_code = countries[i][0];
       country_name = countries[i][1];
-      $("#country_search").append("<option value='"+country_short_code+"'>"+country_name+"</option>");
+      if(country_short_code == "BD"){
+        selected = "selected";
+      }
+      $("#country_search").append("<option "+selected+" value='"+country_short_code+"'>"+country_name+"</option>");
     }
     var searched_country_code = $('#country_search').val();
     load_searched_country_data(searched_country_code);

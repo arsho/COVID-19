@@ -1,5 +1,8 @@
 body{
   font-family: 'Source Sans Pro', sans-serif;
+  /* Show it is fixed to the top */
+  padding-top: 2.5rem;
+  padding-bottom: 3.5rem;
 }
 
 .flag{
