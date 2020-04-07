@@ -20,6 +20,11 @@ $(document).ready(function(){
   var highest_death = 0;
   var highest_death_country = "";
   var countries = [];
+  var confirmed_case_color = "#17a2b8";
+  var death_case_color = "#dc3545";
+  var recovered_case_color = "#28a745";
+  var active_case_color = "#ffc107";
+
 
   /**
   * Creates a date object from a specific formatted string
@@ -216,6 +221,58 @@ $(document).ready(function(){
     window.country_chart_canvas = new Chart(ctx, config);
   }
 
+  function set_single_dataset_bar_chart(html_id, title, dataset_label, bar_color, x_axes_label, y_axes_label, labels, dataset){
+    var data = {
+      labels: labels,
+      datasets: [{
+        label: dataset_label,
+        backgroundColor: bar_color,
+        borderColor: bar_color,
+        data: dataset,
+        fillOpacity: .3,
+        borderWidth: 2
+      }]
+    }
+    var config = {
+      type: 'bar',
+      data: data,
+      options: {
+        responsive: true,
+        title: {
+          display: true,
+          text: title
+        },
+        tooltips: {
+          mode: 'index',
+          intersect: false,
+        },
+        hover: {
+          mode: 'average',
+          intersect: false
+        },
+        scales: {
+          xAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: x_axes_label
+            }
+          }],
+          yAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: y_axes_label
+            }
+          }]
+        }
+      }
+    };
+
+    var ctx = document.getElementById(html_id).getContext('2d');
+    new Chart(ctx, config);
+  }
+
   function load_searched_country_data(country_code){
     var country_summary_api_url = country_summary_api_base_url+country_code;
     var country_historical_api_url = country_historical_api_base_url+country_code+"?lastdays=1000";
@@ -365,6 +422,11 @@ $(document).ready(function(){
   });
 
   $.getJSON(countries_api_url).done(function(data){
+    var countries_data = [];
+    var chart_labels = [], confirmed_series = [], death_series = [], active_series = [], recovered_series = [];
+    var country_counter = 0;
+    var max_country = 10;
+
     $.each(data, function(i, item){
       if(item.country == "World"){
         return true;
@@ -449,6 +511,55 @@ $(document).ready(function(){
       country_row += "</tr>";
       $("#corona_country_rows").append(country_row);
     });
+
+    $.each(corona_global_data, function(key, value){
+      countries_data.push(value);
+    });
+
+    countries_data.sort(function(a, b){
+      if(a["cases"] > b["cases"]){
+        return -1;
+      }
+      else if(a["cases"] < b["cases"]){
+        return 1;
+      }
+      else{
+        if(a["deaths"] > b["deaths"]){
+          return -1;
+        }
+        else if(a["deaths"] < b["deaths"]){
+          return 1;
+        }
+        else{
+          if(a["recovered"] > b["recovered"]){
+            return -1;
+          }
+          else if(a["recovered"] < b["recovered"]){
+            return 1;
+          }
+          return 0;
+        }
+      }
+    });
+
+
+    $.each(countries_data, function(key, value){
+      if(country_counter == max_country){
+        return true;
+      }
+      chart_labels.push(value.country);
+      confirmed_series.push(value.cases);
+      death_series.push(value.deaths);
+      active_series.push(value.active);
+      recovered_series.push(value.recovered);
+      country_counter++;
+    });
+
+    set_single_dataset_bar_chart("summary_cases_chart", "Total Cases", "Confirmed Cases", confirmed_case_color, "Countries", "Number of confirmed cases", chart_labels, confirmed_series);
+    set_single_dataset_bar_chart("summary_death_chart", "Total Deaths", "Death Counts", death_case_color, "Countries", "Number of death cases", chart_labels, death_series);
+    set_single_dataset_bar_chart("summary_active_chart", "Total Active Cases", "Active Cases", active_case_color, "Countries", "Number of active cases", chart_labels, active_series);
+    set_single_dataset_bar_chart("summary_recovered_chart", "Total Recovered", "Recovered Cases", recovered_case_color, "Countries", "Number of recovered cases", chart_labels, recovered_series);
+
 
     var corona_country_table = $('#corona_country_table').DataTable({"columnDefs": [ {
       "targets"  : 'no-sort',

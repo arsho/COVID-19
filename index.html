@@ -71,6 +71,13 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
+          <a class="nav-link" title="Source Code" href="https://github.com/arsho/COVID-19/">
+            <i class="fab fa-github fa-lg"></i>
+            Source Code
+          </a>
+        </li>
+
+        <li class="nav-item">
           <a class="nav-link" title="Website" href="https://arshovon.com/">
             <i class="fas fa-link fa-lg"></i>
             arshovon.com
@@ -135,14 +142,14 @@
                     <div class="col-sm-2">
                       <div class="card bg-dark text-white shadow-lg rounded">
                         <div class="card-body">
-                          <h5 class="card-title">Cases Per Million</h5>
+                          <h5 class="card-title">Cases/Million</h5>
                           <p class="card-text">
                             <span id="total_cases_per_million"></span>
                           </p>
                         </div>
                         <div class="card-footer">
                           <small>
-                            Deaths Per Million: <span id="total_deaths_per_million"></span>
+                            Deaths/Million: <span id="total_deaths_per_million"></span>
                           </small>
                         </div>
                       </div>
@@ -214,6 +221,60 @@
 
                 </div>
               </section>
+              <div class="row mb-4">
+                  <div class="col-md-6">
+                    <div class="card">
+                      <h5 class="card-header">
+                        Total Cases
+                      </h5>
+                      <div class="card-body">
+                        <canvas id="summary_cases_chart"></canvas>
+                        <!-- ./summary_cases_chart -->
+                      </div>
+                    </div>
+                  </div>
+                  <!-- ./col-md-6 -->
+                  <div class="col-md-6">
+                    <div class="card">
+                      <h5 class="card-header">
+                        Total Deaths
+                      </h5>
+                      <div class="card-body">
+                        <canvas id="summary_death_chart"></canvas>
+                        <!-- ./summary_death_chart -->
+                      </div>
+                    </div>
+                  </div>
+                  <!-- ./col-md-6 -->
+              </div>
+              <!-- ./row -->
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card">
+                    <h5 class="card-header">
+                      Active Cases
+                    </h5>
+                    <div class="card-body">
+                      <canvas id="summary_active_chart"></canvas>
+                      <!-- ./summary_active_chart -->
+                    </div>
+                  </div>
+                </div>
+                <!-- ./col-md-6 -->
+                <div class="col-md-6">
+                  <div class="card">
+                    <h5 class="card-header">
+                      Total Recovered
+                    </h5>
+                    <div class="card-body">
+                      <canvas id="summary_recovered_chart"></canvas>
+                      <!-- ./summary_recovered_chart -->
+                    </div>
+                  </div>
+                </div>
+                <!-- ./col-md-6 -->
+              </div>
+              <!-- ./row -->
             </div>
             <!-- ./summary -->
             <div class="tab-pane fade" id="global-data" role="tabpanel" aria-labelledby="global-data-tab">
@@ -497,9 +558,6 @@
                       <!-- ./col-md-12 -->
                     </div>
                     <!-- ./row -->
-
-
-                    <!-- ./chart ./row -->
                     <!-- ./country_search_result -->
                   </div>
                   <!-- ./col-md-12 -->
