@@ -1,6 +1,6 @@
 # COVID-19
 
-A data visualization project to show current situation of COVID-19 worldwide.
+A data visualization project to show current situation of COVID-19 worldwide. This application can be accessed from: [https://arshovon.com/apps/c19/](https://arshovon.com/apps/c19/)
 
 ## Features
 - Summary of worldwide status of COVID-19 specifying number of affected countries, total cases, total deaths and total recovered cases.
@@ -72,9 +72,13 @@ Please contribute using [Github Flow](https://guides.github.com/introduction/flo
   ```
 
 
-## Thanks
+### Reference
+
+- [jQuery $.each method](https://api.jquery.com/jquery.each/)
+
+
+## Influenced by
 
 - [NOVELCovid API](https://corona.lmao.ninja/)
 - [NC-19SRIM](https://www.smreza.com/projects/covid-19/)
 - [NOVEL CORONA VIRUS DISEASE \(COVID-19\)](http://corona.drmwahiduzzaman.info/)
-- [jQuery $.each method](https://api.jquery.com/jquery.each/)
