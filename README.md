@@ -35,10 +35,6 @@ A data visualization project to show current situation of COVID-19 worldwide. Th
 
 ![alt Sortable and instant searchable data table](/screenshots/data_table.png?style=center)
 
-- Worldmap of confirmed cases
-
-![alt Worldmap of confirmed cases](/screenshots/world_map_confirmed_cases.png?style=center)
-
 - Worldmap of recovered cases
 
 ![alt Worldmap of recovered cases](/screenshots/world_map_recovered_cases.png?style=center)
@@ -47,6 +43,9 @@ A data visualization project to show current situation of COVID-19 worldwide. Th
 
 ![alt Search by country](/screenshots/search_by_country.png?style=center)
 
+- Mobile view
+
+![alt Mobile View](/screenshots/mobile.png?style=center)
 
 ## Support
 

@@ -24,6 +24,8 @@ $(document).ready(function(){
   var death_case_color = "#dc3545";
   var recovered_case_color = "#28a745";
   var active_case_color = "#ffc107";
+  var summary_max_country = 6;
+  var worldmap_max_country = 10;
 
 
   /**
@@ -69,7 +71,7 @@ $(document).ready(function(){
 
   function sizeMap() {
     $page_width = $('#content').width();
-    var containerWidth = $page_width-($page_width/10.0),
+    var containerWidth = $page_width,
     containerHeight = (containerWidth / 3);
     $('.world_map').css({
       'width': containerWidth,
@@ -82,11 +84,37 @@ $(document).ready(function(){
     return "https://www.countryflags.io/"+country_code+"/shiny/64.png";
   }
 
-  function get_custom_label(code){
+  function get_sorted_countries_by_criteria(unsorted_countries, sort_criteria, max_number_of_elements){
+    var sorted_countries = {};
+    var chart_labels = [];
+    var data_series = [];
+    var country_counter = 0;
+
+    countries_data = JSON.parse(JSON.stringify(unsorted_countries));
+    countries_data.sort(function(a, b){
+      return b[sort_criteria] - a[sort_criteria];
+    });
+
+    $.each(countries_data, function(key, value){
+      if(country_counter == max_number_of_elements){
+        return true;
+      }
+      chart_labels.push(value.country);
+      data_series.push(value[sort_criteria]);
+      country_counter++;
+    });
+    sorted_countries["labels"] = chart_labels;
+    sorted_countries["data"] = data_series;
+    return sorted_countries;
+  }
+
+  function get_custom_label(code, criteria){
     var country_code = code.toUpperCase();
     var message = "";
     if(corona_global_data.hasOwnProperty(country_code)){
-      message = "<h6 class='center'>"+corona_global_data[country_code].country + "</h6>"+"<b>Total Deaths</b>: " +corona_global_data[country_code].deaths+"<br><b>Total Cases</b>: " +corona_global_data[country_code].cases+"<br><b>Recovered</b>: " +corona_global_data[country_code].recovered+"<br><b>Active</b>: " +corona_global_data[country_code].active;
+      var country_name = corona_global_data[country_code].country;
+      var country_criteria_value = corona_global_data[country_code][criteria];
+      message = "<h6 class='center'>"+country_name + "</h6>"+"<b>Total "+criteria+"</b>: " +country_criteria_value;
     }
     else{
       message = code + ' data is not available.';
@@ -140,7 +168,7 @@ $(document).ready(function(){
     return colors;
   }
 
-  function set_map_data(html_id_selector, colors){
+  function set_map_data(html_id_selector, colors, criteria){
     $(html_id_selector).vectorMap({
       map: 'world_en',
       backgroundColor: '#a5bfdd',
@@ -158,8 +186,13 @@ $(document).ready(function(){
       showTooltip: true,
       onLabelShow: function(event, label, code)
       {
-        var country_summary = get_custom_label(code);
+        var country_summary = get_custom_label(code, criteria);
         label.html(country_summary);
+      },
+      onRegionClick: function(event, code, region)
+      {
+        $('#country_search').val(code.toUpperCase()).change();
+        $("#search-country-data-tab").tab('show');
       },
     });
   }
@@ -395,7 +428,7 @@ $(document).ready(function(){
     var countries_data = [];
     var chart_labels = [], confirmed_series = [], death_series = [], active_series = [], recovered_series = [];
     var country_counter = 0;
-    var max_country = 6;
+
 
     $.each(data, function(i, item){
       if(item.country == "World"){
@@ -484,13 +517,13 @@ $(document).ready(function(){
     });
 
     /*
-      Trigger dropdown value change when user clicks on country btn in DataTable,
-      then show the country tab
-     */
+    Trigger dropdown value change when user clicks on country btn in DataTable,
+    then show the country tab
+    */
     $(".country_btn").on("click", function(){
       $country_code = $(this).attr("country_code");
       $('#country_search').val($country_code).change();
-      $("#search-country-data-tab").tab('show')
+      $("#search-country-data-tab").tab('show');
     });
 
 
@@ -526,7 +559,7 @@ $(document).ready(function(){
 
 
     $.each(countries_data, function(key, value){
-      if(country_counter == max_country){
+      if(country_counter == summary_max_country){
         return true;
       }
       chart_labels.push(value.country);
@@ -557,10 +590,20 @@ $(document).ready(function(){
     var colors_active = get_calculated_colors("active");
     var colors_recovered = get_calculated_colors("recovered");
 
-    set_map_data("#corona_world_map_deaths", colors_deaths);
-    set_map_data("#corona_world_map_cases", colors_cases);
-    set_map_data("#corona_world_map_active", colors_active);
-    set_map_data("#corona_world_map_recovered", colors_recovered);
+    set_map_data("#corona_world_map_deaths", colors_deaths, "deaths");
+    set_map_data("#corona_world_map_cases", colors_cases, "cases");
+    set_map_data("#corona_world_map_active", colors_active, "active");
+    set_map_data("#corona_world_map_recovered", colors_recovered, "recovered");
+
+    var confirmed_sorted_countries = get_sorted_countries_by_criteria(countries_data, "cases", worldmap_max_country);
+    set_single_dataset_bar_chart("worldmap_confirmed_chart", "Worldwide Total Cases", "Confirmed Cases", confirmed_case_color, "Countries", "Number of confirmed cases", confirmed_sorted_countries["labels"], confirmed_sorted_countries["data"]);
+    var deaths_sorted_countries = get_sorted_countries_by_criteria(countries_data, "deaths", worldmap_max_country);
+    set_single_dataset_bar_chart("worldmap_deaths_chart", "Worldwide Total Deaths", "Death Counts", death_case_color, "Countries", "Number of death cases", deaths_sorted_countries["labels"], deaths_sorted_countries["data"]);
+    var active_sorted_countries = get_sorted_countries_by_criteria(countries_data, "active", worldmap_max_country);
+    set_single_dataset_bar_chart("worldmap_active_chart", "Worldwide Total Active Cases", "Active Cases", active_case_color, "Countries", "Number of active cases", active_sorted_countries["labels"], active_sorted_countries["data"]);
+    var recovered_sorted_countries = get_sorted_countries_by_criteria(countries_data, "recovered", worldmap_max_country);
+    set_single_dataset_bar_chart("worldmap_recovered_chart", "Worldwide Total Recovered", "Recovered Cases", recovered_case_color, "Countries", "Number of recovered cases", recovered_sorted_countries["labels"], recovered_sorted_countries["data"]);
+
 
     highest_death_country_summary = highest_death_country+" ("+highest_death.toLocaleString()+")";
     $("#highest_death_country_summary").html(highest_death_country_summary);
