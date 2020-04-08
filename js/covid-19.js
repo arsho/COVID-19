@@ -26,6 +26,17 @@ $(document).ready(function(){
   var active_case_color = "#ffc107";
   var summary_max_country = 6;
   var worldmap_max_country = 10;
+  var default_start_color = [200, 238, 255];
+  var default_end_color = [0, 100, 145];
+  var confirmed_start_color = [235, 248, 250];
+  var confirmed_end_color = [57, 183, 205];
+  var death_start_color = [255,229,229];
+  var death_end_color = [102, 0, 0];
+  var recovered_start_color = [239, 245, 239];
+  var recovered_end_color = [56, 94, 15];
+  var active_start_color = [255, 251, 230];
+  var active_end_color = [139, 117, 0];
+
 
 
   /**
@@ -122,12 +133,12 @@ $(document).ready(function(){
     return message;
   }
 
-  function get_calculated_colors(criteria){
+  function get_calculated_colors(criteria, start_color, end_color){
     var max = 0,
     min = Number.MAX_VALUE,
     cc,
-    startColor = [200, 238, 255],
-    endColor = [0, 100, 145],
+    startColor = start_color,
+    endColor = end_color,
     colors = {},
     hex;
 
@@ -585,10 +596,10 @@ $(document).ready(function(){
       corona_country_table.search( this.value ).draw();
     });
 
-    var colors_deaths = get_calculated_colors("deaths");
-    var colors_cases = get_calculated_colors("cases");
-    var colors_active = get_calculated_colors("active");
-    var colors_recovered = get_calculated_colors("recovered");
+    var colors_deaths = get_calculated_colors("deaths", death_start_color, death_end_color);
+    var colors_cases = get_calculated_colors("cases", confirmed_start_color, confirmed_end_color);
+    var colors_active = get_calculated_colors("active", active_start_color, active_end_color);
+    var colors_recovered = get_calculated_colors("recovered", recovered_start_color, recovered_end_color);
 
     set_map_data("#corona_world_map_deaths", colors_deaths, "deaths");
     set_map_data("#corona_world_map_cases", colors_cases, "cases");
