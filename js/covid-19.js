@@ -133,7 +133,34 @@ $(document).ready(function(){
     return message;
   }
 
-  function get_calculated_colors(criteria, start_color, end_color){
+  function get_color_legend_span(color_rgb){
+    var color = color_rgb.map(String).join(",");
+    return '<span class="worldmap_legend_span" style="background-color:rgb('+color+');"></span>';
+  }
+
+  function set_color_legends(legend_id, start_value_legend_id, end_value_legend_id, start_color, end_color, max, min, number_of_legends){
+    if(start_value_legend_id!=""){
+      $("#"+start_value_legend_id).html("<strong>"+min+"</strong>");
+    }
+    if(end_value_legend_id!=""){
+      $("#"+end_value_legend_id).html("<strong>"+max+"</strong>");
+    }
+
+    if(legend_id!=""){
+      $("#"+legend_id).append(get_color_legend_span(start_color));
+      var number_of_middle_colors = number_of_legends - 2;
+      var r_step = Math.round((start_color[0] - end_color[0])/number_of_middle_colors);
+      var g_step = Math.round((start_color[1] - end_color[1])/number_of_middle_colors);
+      var b_step = Math.round((start_color[2] - end_color[2])/number_of_middle_colors);
+      for(var i=1;i<number_of_middle_colors;i++){
+        var middle_color = [start_color[0]-(r_step*i),start_color[1]-(g_step*i),start_color[2]-(b_step*i)]
+        $("#"+legend_id).append(get_color_legend_span(middle_color));
+      }
+      $("#"+legend_id).append(get_color_legend_span(end_color));
+    }
+  }
+
+  function get_calculated_colors(criteria, start_color, end_color, legend_id, start_value_legend_id, end_value_legend_id){
     var max = 0,
     min = Number.MAX_VALUE,
     cc,
@@ -156,7 +183,9 @@ $(document).ready(function(){
       }
     }
 
-    //set colors according to values of GDP
+    set_color_legends(legend_id, start_value_legend_id, end_value_legend_id, start_color, end_color, max, min, 6);
+
+    //set colors according to values
     for (cc in corona_global_data)
     {
       criteria_value = corona_global_data[cc][criteria];
@@ -581,7 +610,7 @@ $(document).ready(function(){
       country_counter++;
     });
 
-    set_single_dataset_bar_chart("summary_cases_chart", "Worldwide Total Cases", "Confirmed Cases", confirmed_case_color, "Countries", "Number of confirmed cases", chart_labels, confirmed_series);
+    set_single_dataset_bar_chart("summary_cases_chart", "Worldwide Confirmed Cases", "Confirmed Cases", confirmed_case_color, "Countries", "Number of confirmed cases", chart_labels, confirmed_series);
     set_single_dataset_bar_chart("summary_death_chart", "Worldwide Total Deaths", "Death Counts", death_case_color, "Countries", "Number of death cases", chart_labels, death_series);
     set_single_dataset_bar_chart("summary_active_chart", "Worldwide Total Active Cases", "Active Cases", active_case_color, "Countries", "Number of active cases", chart_labels, active_series);
     set_single_dataset_bar_chart("summary_recovered_chart", "Worldwide Total Recovered", "Recovered Cases", recovered_case_color, "Countries", "Number of recovered cases", chart_labels, recovered_series);
@@ -596,10 +625,10 @@ $(document).ready(function(){
       corona_country_table.search( this.value ).draw();
     });
 
-    var colors_deaths = get_calculated_colors("deaths", death_start_color, death_end_color);
-    var colors_cases = get_calculated_colors("cases", confirmed_start_color, confirmed_end_color);
-    var colors_active = get_calculated_colors("active", active_start_color, active_end_color);
-    var colors_recovered = get_calculated_colors("recovered", recovered_start_color, recovered_end_color);
+    var colors_cases = get_calculated_colors("cases", confirmed_start_color, confirmed_end_color, "world_map_confirmed_legend", "confirmed_legend_start_value", "confirmed_legend_end_value");
+    var colors_deaths = get_calculated_colors("deaths", death_start_color, death_end_color, "world_map_deaths_legend", "deaths_legend_start_value", "deaths_legend_end_value");
+    var colors_active = get_calculated_colors("active", active_start_color, active_end_color, "world_map_active_legend", "active_legend_start_value", "active_legend_end_value");
+    var colors_recovered = get_calculated_colors("recovered", recovered_start_color, recovered_end_color, "world_map_recovered_legend", "recovered_legend_start_value", "recovered_legend_end_value");
 
     set_map_data("#corona_world_map_deaths", colors_deaths, "deaths");
     set_map_data("#corona_world_map_cases", colors_cases, "cases");
@@ -607,13 +636,13 @@ $(document).ready(function(){
     set_map_data("#corona_world_map_recovered", colors_recovered, "recovered");
 
     var confirmed_sorted_countries = get_sorted_countries_by_criteria(countries_data, "cases", worldmap_max_country);
-    set_single_dataset_bar_chart("worldmap_confirmed_chart", "Worldwide Total Cases", "Confirmed Cases", confirmed_case_color, "Countries", "Number of confirmed cases", confirmed_sorted_countries["labels"], confirmed_sorted_countries["data"]);
+    set_single_dataset_bar_chart("worldmap_confirmed_chart", "Top "+worldmap_max_country+" countries with most confirmed cases", "Confirmed Cases", confirmed_case_color, "Countries", "Number of confirmed cases", confirmed_sorted_countries["labels"], confirmed_sorted_countries["data"]);
     var deaths_sorted_countries = get_sorted_countries_by_criteria(countries_data, "deaths", worldmap_max_country);
-    set_single_dataset_bar_chart("worldmap_deaths_chart", "Worldwide Total Deaths", "Death Counts", death_case_color, "Countries", "Number of death cases", deaths_sorted_countries["labels"], deaths_sorted_countries["data"]);
+    set_single_dataset_bar_chart("worldmap_deaths_chart", "Top "+worldmap_max_country+" countries with most death cases", "Death Counts", death_case_color, "Countries", "Number of death cases", deaths_sorted_countries["labels"], deaths_sorted_countries["data"]);
     var active_sorted_countries = get_sorted_countries_by_criteria(countries_data, "active", worldmap_max_country);
-    set_single_dataset_bar_chart("worldmap_active_chart", "Worldwide Total Active Cases", "Active Cases", active_case_color, "Countries", "Number of active cases", active_sorted_countries["labels"], active_sorted_countries["data"]);
+    set_single_dataset_bar_chart("worldmap_active_chart", "Top "+worldmap_max_country+" countries with most active cases", "Active Cases", active_case_color, "Countries", "Number of active cases", active_sorted_countries["labels"], active_sorted_countries["data"]);
     var recovered_sorted_countries = get_sorted_countries_by_criteria(countries_data, "recovered", worldmap_max_country);
-    set_single_dataset_bar_chart("worldmap_recovered_chart", "Worldwide Total Recovered", "Recovered Cases", recovered_case_color, "Countries", "Number of recovered cases", recovered_sorted_countries["labels"], recovered_sorted_countries["data"]);
+    set_single_dataset_bar_chart("worldmap_recovered_chart", "Top "+worldmap_max_country+" countries with most recovered cases", "Recovered Cases", recovered_case_color, "Countries", "Number of recovered cases", recovered_sorted_countries["labels"], recovered_sorted_countries["data"]);
 
 
     highest_death_country_summary = highest_death_country+" ("+highest_death.toLocaleString()+")";

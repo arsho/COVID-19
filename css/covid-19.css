@@ -44,3 +44,28 @@ body{
   font-size: 14px;
   vertical-align: middle;
 }
+
+/* Worldmap legend */
+.worldmap_legend_wrapper{
+  background-color: #a5bfdd;
+}
+.worldmap_legend {
+  width: auto;
+  height: 20px;
+  margin-bottom: 20px;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.worldmap_legend_span {
+  width: 30px;
+  height: 100%;
+  display: block;
+  float: left;
+}
+
+.world_map_legend_value {
+  margin-left: 5px;
+  margin-right: 5px;
+}
