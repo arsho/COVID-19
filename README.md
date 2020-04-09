@@ -1,14 +1,15 @@
 # COVID-19
 
-A data visualization project to show current situation of COVID-19 worldwide. This application can be accessed from: [https://arshovon.com/apps/c19/](https://arshovon.com/apps/c19/)
+A data visualization project to show current situation of COVID-19 worldwide. This application can be accessed from: [https://arshovon.com/apps/c19/](https://arshovon.com/apps/c19/).
 
 ## Features
-- Summary of worldwide status of COVID-19 specifying number of affected countries, total cases, total deaths and total recovered cases.
+- Summary of worldwide status of COVID-19 specifying number of affected countries, total cases, total deaths and total recovered cases, total tests, total deaths per million, total cases per million and total tests per million.
 - Sortable and instant searchable data table of all countries.
-- World map of confirmed cases.
-- World map of active cases.
-- World map of recovered cases.
-- Search details of a specific country.
+- World map of confirmed cases and top countries chart with most confirmed cases.
+- World map of death cases and top countries chart with most death cases.
+- World map of active cases and top countries chart with most active cases.
+- World map of recovered cases and top countries chart with most recovered cases.
+- View details of a specific country.
 
 ## Dependencies
 
@@ -35,9 +36,25 @@ A data visualization project to show current situation of COVID-19 worldwide. Th
 
 ![alt Sortable and instant searchable data table](/screenshots/data_table.png?style=center)
 
+- Worldmap of confirmed cases
+
+![alt Worldmap of recovered cases](/screenshots/confirmed_world_map.png?style=center)
+
+- Worldmap of death cases
+
+![alt Worldmap of recovered cases](/screenshots/deaths_world_map.png?style=center)
+
+- Worldmap of active cases
+
+![alt Worldmap of recovered cases](/screenshots/active_world_map.png?style=center)
+
 - Worldmap of recovered cases
 
-![alt Worldmap of recovered cases](/screenshots/world_map_recovered_cases.png?style=center)
+![alt Worldmap of recovered cases](/screenshots/recovered_world_map.png?style=center)
+
+- Top countries with most recovered cases
+
+![alt top countries with most recovered cases](/screenshots/top_countries_with_most_recovered_cases?style=center)
 
 - Search by country
 

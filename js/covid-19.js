@@ -140,10 +140,10 @@ $(document).ready(function(){
 
   function set_color_legends(legend_id, start_value_legend_id, end_value_legend_id, start_color, end_color, max, min, number_of_legends){
     if(start_value_legend_id!=""){
-      $("#"+start_value_legend_id).html("Color range: "+min);
+      $("#"+start_value_legend_id).html("<strong>"+min+"</strong>");
     }
     if(end_value_legend_id!=""){
-      $("#"+end_value_legend_id).html(max);
+      $("#"+end_value_legend_id).html("<strong>"+max+"</strong>");
     }
 
     if(legend_id!=""){
@@ -610,7 +610,7 @@ $(document).ready(function(){
       country_counter++;
     });
 
-    set_single_dataset_bar_chart("summary_cases_chart", "Worldwide Total Cases", "Confirmed Cases", confirmed_case_color, "Countries", "Number of confirmed cases", chart_labels, confirmed_series);
+    set_single_dataset_bar_chart("summary_cases_chart", "Worldwide Confirmed Cases", "Confirmed Cases", confirmed_case_color, "Countries", "Number of confirmed cases", chart_labels, confirmed_series);
     set_single_dataset_bar_chart("summary_death_chart", "Worldwide Total Deaths", "Death Counts", death_case_color, "Countries", "Number of death cases", chart_labels, death_series);
     set_single_dataset_bar_chart("summary_active_chart", "Worldwide Total Active Cases", "Active Cases", active_case_color, "Countries", "Number of active cases", chart_labels, active_series);
     set_single_dataset_bar_chart("summary_recovered_chart", "Worldwide Total Recovered", "Recovered Cases", recovered_case_color, "Countries", "Number of recovered cases", chart_labels, recovered_series);
@@ -636,13 +636,13 @@ $(document).ready(function(){
     set_map_data("#corona_world_map_recovered", colors_recovered, "recovered");
 
     var confirmed_sorted_countries = get_sorted_countries_by_criteria(countries_data, "cases", worldmap_max_country);
-    set_single_dataset_bar_chart("worldmap_confirmed_chart", "Worldwide Total Cases", "Confirmed Cases", confirmed_case_color, "Countries", "Number of confirmed cases", confirmed_sorted_countries["labels"], confirmed_sorted_countries["data"]);
+    set_single_dataset_bar_chart("worldmap_confirmed_chart", "Top "+worldmap_max_country+" countries with most confirmed cases", "Confirmed Cases", confirmed_case_color, "Countries", "Number of confirmed cases", confirmed_sorted_countries["labels"], confirmed_sorted_countries["data"]);
     var deaths_sorted_countries = get_sorted_countries_by_criteria(countries_data, "deaths", worldmap_max_country);
-    set_single_dataset_bar_chart("worldmap_deaths_chart", "Worldwide Total Deaths", "Death Counts", death_case_color, "Countries", "Number of death cases", deaths_sorted_countries["labels"], deaths_sorted_countries["data"]);
+    set_single_dataset_bar_chart("worldmap_deaths_chart", "Top "+worldmap_max_country+" countries with most death cases", "Death Counts", death_case_color, "Countries", "Number of death cases", deaths_sorted_countries["labels"], deaths_sorted_countries["data"]);
     var active_sorted_countries = get_sorted_countries_by_criteria(countries_data, "active", worldmap_max_country);
-    set_single_dataset_bar_chart("worldmap_active_chart", "Worldwide Total Active Cases", "Active Cases", active_case_color, "Countries", "Number of active cases", active_sorted_countries["labels"], active_sorted_countries["data"]);
+    set_single_dataset_bar_chart("worldmap_active_chart", "Top "+worldmap_max_country+" countries with most active cases", "Active Cases", active_case_color, "Countries", "Number of active cases", active_sorted_countries["labels"], active_sorted_countries["data"]);
     var recovered_sorted_countries = get_sorted_countries_by_criteria(countries_data, "recovered", worldmap_max_country);
-    set_single_dataset_bar_chart("worldmap_recovered_chart", "Worldwide Total Recovered", "Recovered Cases", recovered_case_color, "Countries", "Number of recovered cases", recovered_sorted_countries["labels"], recovered_sorted_countries["data"]);
+    set_single_dataset_bar_chart("worldmap_recovered_chart", "Top "+worldmap_max_country+" countries with most recovered cases", "Recovered Cases", recovered_case_color, "Countries", "Number of recovered cases", recovered_sorted_countries["labels"], recovered_sorted_countries["data"]);
 
 
     highest_death_country_summary = highest_death_country+" ("+highest_death.toLocaleString()+")";

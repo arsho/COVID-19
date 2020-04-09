@@ -46,9 +46,12 @@ body{
 }
 
 /* Worldmap legend */
+.worldmap_legend_wrapper{
+  background-color: #a5bfdd;
+}
 .worldmap_legend {
   width: auto;
-  height: 15px;
+  height: 20px;
   margin-bottom: 20px;
   display: inline-block;
   margin: 0;
