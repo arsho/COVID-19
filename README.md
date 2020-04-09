@@ -54,7 +54,7 @@ A data visualization project to show current situation of COVID-19 worldwide. Th
 
 - Top countries with most recovered cases
 
-![alt top countries with most recovered cases](/screenshots/top_countries_with_most_recovered_cases?style=center)
+![alt top countries with most recovered cases](/screenshots/top_countries_with_most_recovered_cases.png?style=center)
 
 - Search by country
 
