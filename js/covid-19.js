@@ -517,10 +517,6 @@ $(document).ready(function(){
       country_row += "</td>";
 
       country_row += "<td>";
-      country_row += item.casesPerOneMillion;
-      country_row += "</td>";
-
-      country_row += "<td>";
       country_row += item.deaths.toLocaleString();
       country_row += "</td>";
 
@@ -529,19 +525,7 @@ $(document).ready(function(){
       country_row += "</td>";
 
       country_row += "<td>";
-      country_row += item.deathsPerOneMillion;
-      country_row += "</td>";
-
-      country_row += "<td>";
       country_row += item.tests.toLocaleString();
-      country_row += "</td>";
-
-      country_row += "<td>";
-      country_row += item.testsPerOneMillion.toLocaleString();
-      country_row += "</td>";
-
-      country_row += "<td>";
-      country_row += item.recovered.toLocaleString();
       country_row += "</td>";
 
       country_row += "<td>";
@@ -549,8 +533,26 @@ $(document).ready(function(){
       country_row += "</td>";
 
       country_row += "<td>";
+      country_row += item.recovered.toLocaleString();
+      country_row += "</td>";
+
+      country_row += "<td>";
       country_row += item.critical.toLocaleString();
       country_row += "</td>";
+
+      country_row += "<td>";
+      country_row += item.casesPerOneMillion;
+      country_row += "</td>";            
+
+      country_row += "<td>";
+      country_row += item.deathsPerOneMillion;
+      country_row += "</td>";
+
+      country_row += "<td>";
+      country_row += item.testsPerOneMillion.toLocaleString();
+      country_row += "</td>";
+
+     
 
       country_row += "</tr>";
       $("#corona_country_rows").append(country_row);
