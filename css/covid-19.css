@@ -69,3 +69,10 @@ body{
   margin-left: 5px;
   margin-right: 5px;
 }
+
+/* custom jumbotron */
+.custom-jumbotron{
+  background-image:
+  linear-gradient(to bottom left, #545e6c 0%, transparent 3%, transparent 97%, #545e6c 100%),
+  linear-gradient(to bottom right, #545e6c 0%, transparent 3%, transparent 97%, #545e6c 100%);
+}
