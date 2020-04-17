@@ -1,7 +1,7 @@
 $(document).ready(function(){
-  var countries_api_url = "https://corona.lmao.ninja/countries?sort=cases";
-  var global_summary_api_url = "https://corona.lmao.ninja/all";
-  var country_summary_api_base_url = "https://corona.lmao.ninja/countries/";
+  var countries_api_url = "https://corona.lmao.ninja/v2/countries?sort=cases";
+  var global_summary_api_url = "https://corona.lmao.ninja/v2/all";
+  var country_summary_api_base_url = "https://corona.lmao.ninja/v2/countries/";
   var country_historical_api_base_url = "https://corona.lmao.ninja/v2/historical/";
 
   var corona_global_data = {};
@@ -542,7 +542,7 @@ $(document).ready(function(){
 
       country_row += "<td>";
       country_row += item.casesPerOneMillion;
-      country_row += "</td>";            
+      country_row += "</td>";
 
       country_row += "<td>";
       country_row += item.deathsPerOneMillion;
@@ -552,7 +552,7 @@ $(document).ready(function(){
       country_row += item.testsPerOneMillion.toLocaleString();
       country_row += "</td>";
 
-     
+
 
       country_row += "</tr>";
       $("#corona_country_rows").append(country_row);

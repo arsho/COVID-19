@@ -81,7 +81,11 @@
             <i class="fa fa-flag"></i> Country
           </a>
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="false">
+            <i class="fa fa-info-circle"></i> About
+          </a>
+        </li>
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
@@ -90,7 +94,6 @@
             Code
           </a>
         </li>
-
       </ul>
 
     </div>
@@ -270,16 +273,16 @@
                           <th class="no-sort">Flag</th>
                           <th>Country</th>
                           <th>Cases</th>
-                          <th class="table-info">Today Cases</th>                          
+                          <th class="table-info">Today Cases</th>
                           <th>Deaths</th>
                           <th class="table-danger">Today Deaths</th>
                           <th>Tests</th>
                           <th>Active</th>
-                          <th>Recovered</th>                         
+                          <th>Recovered</th>
                           <th>Critical</th>
                           <th>Cases / Million</th>
-                          <th>Deaths / Million</th>                          
-                          <th>Tests / Million</th>                          
+                          <th>Deaths / Million</th>
+                          <th>Tests / Million</th>
                         </tr>
                       </thead>
                       <tbody id="corona_country_rows">
@@ -637,6 +640,97 @@
               </div>
               <!-- ./list-search-country-data -->
             </div>
+            <!-- ./search-country-data -->
+            <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
+              <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h3>
+                  About COVID-19 Dashboard
+                </h3>
+              </div>
+
+              <section class="jumbotron custom-jumbotron">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="lead">
+                        <h4>A responsive data visualization dashboard that shows current worldwide scenario of COVID-19</h4>
+                        <hr>
+                        <p>
+                          This is an open source project and we will welcome any contributions.
+                          Source code URL: <a class="text-decoration-none" href="https://github.com/arsho/COVID-19" title="COVID-19 Source Code">https://github.com/arsho/COVID-19</a>
+                        </p>
+
+                        <h4 class="pt-3">Developers</h4>
+
+                        <div class="row pb-3">
+                          <div class="col-12 col-sm-6">
+                            <div class="card text-white bg-secondary mb-3 shadow-lg border border-secondary">
+                              <div class="card-body">
+                                <h5 class="card-title">Ahmedur Rahman Shovon</h5>
+                                <hr>
+                                <div class="row small">
+                                  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                    <a class="text-light text-decoration-none" target="_blank" href="https://arshovon.com/" title="Visit Ahmedur Rahman Shovon's Website"><i class="fa fa-link"></i> arshovon.com</a>
+                                  </div>
+                                  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                    <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/in/arshovon/" title="Visit Ahmedur Rahman Shovon's Linkedin Profile"><i class="fab fa-linkedin"></i> arshovon</a>
+                                  </div>
+                                  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                    <a class="text-light text-decoration-none" target="_blank" href="https://github.com/arsho" title="Visit Ahmedur Rahman Shovon's Github Profile"><i class="fab fa-github"></i> arsho</a>
+                                  </div>
+                                  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                    <a class="text-light text-decoration-none" target="_blank" href="https://stackoverflow.com/users/3129414/arsho" title="Visit Ahmedur Rahman Shovon's Stackoverflow Profile"><i class="fab fa-stack-overflow"></i> arsho</a>
+                                  </div>
+                                </div>
+                                <!-- ./row -->
+                              </div>
+                              <!-- ./card-body -->
+                            </div>
+                          </div>
+                          <div class="col-12 col-sm-6">
+                            <div class="card text-white bg-info mb-3 shadow-lg border border-info">
+                              <div class="card-body">
+                                <h5 class="card-title">Hasan Mahmud</h5>
+                                <hr>
+                                <div class="row small">
+                                  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                    <a class="text-light text-decoration-none" target="_blank" href="https://hmsajal.github.io/" title="Visit Hasan Mahmud's Website"><i class="fa fa-link"></i> hmsajal.github.io</a>
+                                  </div>
+                                  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                    <a class="text-light text-decoration-none" target="_blank" href="https://linkedin.com/in/hmsajal" title="Visit Hasan Mahmud's Linkedin Profile"><i class="fab fa-linkedin"></i> hmsajal</a>
+                                  </div>
+                                  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                    <a class="text-light text-decoration-none" target="_blank" href="https://github.com/hmsajal" title="Visit Hasan Mahmud's Github Profile"><i class="fab fa-github"></i> hmsajal</a>
+                                  </div>
+                                  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                    <a class="text-light text-decoration-none" target="_blank" href="https://angel.co/u/hmsajal" title="Visit Hasan Mahmud's Angellist Profile"><i class="fab fa-angellist"></i> hmsajal</a>
+                                  </div>
+                                </div>
+                                <!-- ./row -->
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        If you have any queries, you can send an email to:
+                        <ul>
+                          <li>
+                            shovon.sylhet@gmail.com
+                          </li>
+                          <li>
+                            sajal.hm@gmail.com
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- ./row -->
+                </div>
+              </section>
+            </div>
+            <!-- ./about -->
+
           </div>
         </div>
 
