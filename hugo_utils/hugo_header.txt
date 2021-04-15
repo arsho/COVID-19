@@ -1,7 +1,7 @@
 +++
 title =  "COVID-19 World Status"
 date = 2020-04-05T11:15:10+06:00
-lastmod = 2021-04-15T18:30:58+00:00
+lastmod = 2021-04-15T18:40:11+00:00
 featured_image = "/apps/c19/screenshots/summary.png"
 description = "COVID-19 World Status Application"
 layout = "blank"
