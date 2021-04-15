@@ -26,5 +26,7 @@ jobs:
         run: |
           git config --global user.name 'Ahmedur Rahman Shovon'
           git config --global user.email 'arsho@users.noreply.github.com'
-          git commit -am "c19 updated"
-          git push
+          git status -s
+          git add --all
+          git commit -m "c19 updated"
+          git push origin feature/daily_report
