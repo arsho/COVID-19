@@ -1,0 +1,21 @@
+name: Generate Hugo App Directory
+on:
+  push:
+    branches: feature/daily_report
+  pull_request:
+    branches: feature/daily_report
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Run generate hugo app directory script
+        run: python generate_app_directory.py
