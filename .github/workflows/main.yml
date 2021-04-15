@@ -19,6 +19,6 @@ jobs:
 
       - name: Run generate hugo app directory script
         run: |
-        dir
-        python generate_app_directory.py
-        dir
+          dir
+          python generate_app_directory.py
+          dir
