@@ -30,3 +30,4 @@ jobs:
           git add --all
           git commit -m "c19 updated"
           git push origin feature/daily_report
+          git pull origin feature/daily_report
