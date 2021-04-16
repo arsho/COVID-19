@@ -109,10 +109,9 @@ Please contribute using [Github Flow](https://guides.github.com/introduction/flo
 ### References
 
 - [jQuery $.each method](https://api.jquery.com/jquery.each/)
-
+- [disease.sh - Open Disease Data](https://disease.sh/)
 
 ## Influenced by
 
-- [disease.sh - Open Disease Data](https://disease.sh/)
 - [NC-19SRIM](https://www.smreza.com/projects/covid-19/)
 - [NOVEL CORONA VIRUS DISEASE \(COVID-19\)](http://corona.nstu.edu.bd/)
