@@ -89,7 +89,7 @@ Please contribute using [Github Flow](https://guides.github.com/introduction/flo
 
 ### Generate app folder for Hugo
 
-- Github actions workflow is added to generate an app folder which can be added to any Hugo project. The workflow file is available in [./github/workflows/main.yaml](./github/workflows/main.yaml)
+- Github actions workflow is added to generate an app folder which can be added to any Hugo project. The workflow file is available in [.github/workflows/main.yml](.github/workflows/main.yml) 
 - For each push to `master` branch or pull request to `master` branch the `c19` folder is updated.
 - Copy the `c19` folder to any Hugo site's `content` folder.
 - After each push to `master` branch or pull request to `master` branch, update the local branch by:
