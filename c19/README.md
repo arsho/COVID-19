@@ -3,16 +3,13 @@
 A data visualization project to show current situation of COVID-19 worldwide. This application can be accessed from: [https://arshovon.com/apps/c19/](https://arshovon.com/apps/c19/).
 
 ## Features
-- Summary of worldwide status of COVID-19 specifying number of affected countries, total cases, total deaths and total recovered cases, total tests, total deaths per million, total cases per million, and total tests per million.
-- Sortable and instantly searchable data table of all countries.
+- Summary of worldwide status of COVID-19 specifying number of affected countries, total cases, total deaths and total recovered cases, total tests, total deaths per million, total cases per million and total tests per million.
+- Sortable and instant searchable data table of all countries.
 - World map of confirmed cases and top countries chart with most confirmed cases.
 - World map of death cases and top countries chart with most death cases.
 - World map of active cases and top countries chart with most active cases.
 - World map of recovered cases and top countries chart with most recovered cases.
 - View details of a specific country.
-    - Summary information of the country.
-    - Line charts for total confirmed cases, total death cases, total recovered cases, total vaccinations of the searched country.
-    - Bar charts for daily confirmed cases, daily death cases, daily recovered cases, daily vaccinations of the searched country.
 
 ## Dependencies
 
@@ -63,11 +60,6 @@ A data visualization project to show current situation of COVID-19 worldwide. Th
 
 ![alt Search by country](/screenshots/search_by_country.png?style=center)
 
-- Day wise cases of a country (example: confirmed cases)
-
-![alt Day wise cases of a country](/screenshots/country_wise_daily_confirmed_case.png?style=center)
-
-
 - Mobile view
 
 ![alt Mobile View](/screenshots/mobile.png?style=center)
@@ -95,24 +87,14 @@ Please contribute using [Github Flow](https://guides.github.com/introduction/flo
   git reset --hard origin/master
   ```
 
-### Generate app folder for Hugo
 
-- Github actions workflow is added to generate an app folder which can be added to any Hugo project. The workflow file is available in [.github/workflows/main.yml](.github/workflows/main.yml)
-- For each push to `master` branch or pull request to `master` branch the `c19` folder is updated.
-- Copy the `c19` folder to any Hugo site's `content` folder.
-- After each push to `master` branch or pull request to `master` branch, update the local branch by:
-  ```
-  git fetch
-  git reset --hard origin/master
-  ```
-
-### References
+### Reference
 
 - [jQuery $.each method](https://api.jquery.com/jquery.each/)
 
 
 ## Influenced by
 
-- [disease.sh - Open Disease Data](https://disease.sh/)
+- [NOVELCovid API](https://corona.lmao.ninja/)
 - [NC-19SRIM](https://www.smreza.com/projects/covid-19/)
-- [NOVEL CORONA VIRUS DISEASE \(COVID-19\)](http://corona.nstu.edu.bd/)
+- [NOVEL CORONA VIRUS DISEASE \(COVID-19\)](http://corona.drmwahiduzzaman.info/)

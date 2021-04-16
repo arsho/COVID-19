@@ -1,772 +1,837 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>COVID-19 World Status</title>
-  <meta name="author" content="Ahmedur Rahman Shovon">
-  <meta name="keywords" content="COVID-19 World map, COVID-19, COVID-19 situation, COVID-19 tracker, CORONA tracker, COVID-19 World status, covid-19 updates, covid-19 map, corona map">
-  <meta name="description" content="COVID-19 World Status with realtime tracker and interactive map">
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
-  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
-  <!-- Open Graph Protocol-->
-  <meta property="og:site_name" content="COVID-19 World Status">
-  <meta property="og:title" content="COVID-19 World Status" />
-  <meta property="og:type" content="software" />
-  <meta property="og:url" content="https://arshovon.com/apps/c19/" />
-  <meta property="og:image" content="https://arshovon.com/apps/c19/screenshots/summary.png" />
-  <meta property="og:image:secure_url" content="https://arshovon.com/apps/c19/screenshots/summary.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="400" />
-  <meta property="og:image:height" content="300" />
-  <meta property="og:description" content="COVID-19 World Status with realtime tracker and interactive map">
-  <!-- Open Graph Protocol-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>COVID-19 World Status</title>
+    <meta name="author" content="Ahmedur Rahman Shovon">
+    <meta name="keywords" content="COVID-19 World map, COVID-19, COVID-19 situation, COVID-19 tracker, CORONA tracker, COVID-19 World status, covid-19 updates, covid-19 map, corona map">
+    <meta name="description" content="COVID-19 World Status with realtime tracker and interactive map">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
+    <!-- Open Graph Protocol-->
+    <meta property="og:site_name" content="COVID-19 World Status">
+    <meta property="og:title" content="COVID-19 World Status" />
+    <meta property="og:type" content="software" />
+    <meta property="og:url" content="https://arshovon.com/apps/c19/" />
+    <meta property="og:image" content="https://arshovon.com/apps/c19/screenshots/summary.png" />
+    <meta property="og:image:secure_url" content="https://arshovon.com/apps/c19/screenshots/summary.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="300" />
+    <meta property="og:description" content="COVID-19 World Status with realtime tracker and interactive map">
+    <!-- Open Graph Protocol-->
 
-  <!-- Load Bootstrap CSS and Font awesome from CDN -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
-  <!-- Load data table CSS from CDN -->
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-  <!-- Load jqvmap CSS from CDN -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jqvmap.min.css">
-  <!-- Load ChartJS CSS from CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
-  <!-- Load Google web font -->
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Load custom CSS -->
-  <link rel="stylesheet" type="text/css" href="css/covid-19.css">
+    <!-- Load Bootstrap CSS and Font awesome from CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <!-- Load data table CSS from CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <!-- Load jqvmap CSS from CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jqvmap.min.css">
+    <!-- Load ChartJS CSS from CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+    <!-- Load Google web font -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Load custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/covid-19.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top border-bottom shadow-sm">
-    <a class="navbar-brand"><i class="fa fa-viruses"></i> COVID-19</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top border-bottom shadow-sm">
+        <a class="navbar-brand"><i class="fa fa-viruses"></i> COVID-19</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav nav" id="top-menu-tab" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" id="summary-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="summary" aria-selected="true">
-            <i class="fa fa-list-alt"></i> Summary
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="global-data-tab" data-toggle="tab" href="#global-data" role="tab" aria-controls="global-data" aria-selected="false">
-            <i class="fa fa-table"></i> Data
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="worldmap-cases-tab" data-toggle="tab" href="#worldmap-cases" role="tab" aria-controls="worldmap-cases" aria-selected="false">
-            <i class="fa fa-map"></i> Confirmed
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="worldmap-deaths-tab" data-toggle="tab" href="#worldmap-deaths" role="tab" aria-controls="worldmap-deaths" aria-selected="false">
-            <i class="fa fa-map"></i> Death
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="worldmap-active-tab" data-toggle="tab" href="#worldmap-active" role="tab" aria-controls="worldmap-active" aria-selected="false">
-            <i class="fa fa-map"></i> Active
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="worldmap-recovered-tab" data-toggle="tab" href="#worldmap-recovered" role="tab" aria-controls="worldmap-recovered" aria-selected="false">
-            <i class="fa fa-map"></i> Recovered
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="search-country-data-tab" data-toggle="tab" href="#search-country-data" role="tab" aria-controls="search-country-data" aria-selected="false">
-            <i class="fa fa-flag"></i> Country
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="false">
-            <i class="fa fa-info-circle"></i> About
-          </a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a target="_blank" class="nav-link" title="Source Code" href="https://github.com/arsho/COVID-19/">
-            <i class="fab fa-github"></i>
-            Code
-          </a>
-        </li>
-      </ul>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav nav" id="top-menu-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="summary-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="summary" aria-selected="true">
+                        <i class="fa fa-list-alt"></i> Summary
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="global-data-tab" data-toggle="tab" href="#global-data" role="tab" aria-controls="global-data" aria-selected="false">
+                        <i class="fa fa-table"></i> Data
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="worldmap-cases-tab" data-toggle="tab" href="#worldmap-cases" role="tab" aria-controls="worldmap-cases" aria-selected="false">
+                        <i class="fa fa-map"></i> Confirmed
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="worldmap-deaths-tab" data-toggle="tab" href="#worldmap-deaths" role="tab" aria-controls="worldmap-deaths" aria-selected="false">
+                        <i class="fa fa-map"></i> Death
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="worldmap-active-tab" data-toggle="tab" href="#worldmap-active" role="tab" aria-controls="worldmap-active" aria-selected="false">
+                        <i class="fa fa-map"></i> Active
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="worldmap-recovered-tab" data-toggle="tab" href="#worldmap-recovered" role="tab" aria-controls="worldmap-recovered" aria-selected="false">
+                        <i class="fa fa-map"></i> Recovered
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="search-country-data-tab" data-toggle="tab" href="#search-country-data" role="tab" aria-controls="search-country-data" aria-selected="false">
+                        <i class="fa fa-flag"></i> Country
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="false">
+                        <i class="fa fa-info-circle"></i> About
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a target="_blank" class="nav-link" title="Source Code" href="https://github.com/arsho/COVID-19/">
+                        <i class="fab fa-github"></i>
+                        Code
+                    </a>
+                </li>
+            </ul>
 
-    </div>
-  </nav>
+        </div>
+    </nav>
 
-  <main role="main">
-    <div class="container-fluid">
-      <div class="row mt-2">
-        <div class="col-md-12" id="content">
-          <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="summary" role="tabpanel" aria-labelledby="summary-tab">
-              <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h3>
-                  COVID-19 World Status
-                </h3>
-              </div>
+    <main role="main">
+        <div class="container-fluid">
+            <div class="row mt-2">
+                <div class="col-md-12" id="content">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="summary" role="tabpanel" aria-labelledby="summary-tab">
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h3>
+                                    COVID-19 World Status
+                                </h3>
+                            </div>
 
-              <section class="jumbotron text-center">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
-                      <div class="card bg-info text-white shadow-lg rounded h-100">
-                        <div class="card-body">
-                          <h5 class="card-title">Total Cases</h5>
-                          <p class="card-text">
-                            <span id="total_cases"></span>
-                          </p>
-                        </div>
-                        <div class="card-footer">
-                          <small>
-                            Today's cases: <span id="today_cases"></span>
-                          </small>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
-                      <div class="card bg-danger text-white shadow-lg rounded h-100">
-                        <div class="card-body">
-                          <h5 class="card-title">Total Deaths</h5>
-                          <p class="card-text">
-                            <span id="total_deaths"></span>
-                            <small>
-                              (<span id="total_deaths_percent"></span>%)
-                            </small>
-                          </p>
-                        </div>
-                        <div class="card-footer">
-                          <small>
-                            Today's deaths: <span id="today_deaths"></span>
-                          </small>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
-                      <div class="card bg-dark text-white shadow-lg rounded h-100">
-                        <div class="card-body">
-                          <h5 class="card-title">Cases / Million</h5>
-                          <p class="card-text">
-                            <span id="total_cases_per_million"></span>
-                          </p>
-                        </div>
-                        <div class="card-footer">
-                          <small>
-                            Deaths / Million: <span id="total_deaths_per_million"></span>
-                          </small>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
-                      <div class="card bg-success text-white shadow-lg rounded h-100">
-                        <div class="card-body">
-                          <h5 class="card-title">Total Recovered</h5>
-                          <p class="card-text">
-                            <span id="total_recovered"></span>
-                            <small>
-                              (<span id="total_recovered_percent"></span>%)
-                            </small>
-                          </p>
-                        </div>
-                        <div class="card-footer">
-                          <small>
-                            Affected Countries: <span id="total_countries"></span>
-                          </small>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
-                      <div class="card bg-warning text-white shadow-lg rounded h-100">
-                        <div class="card-body">
-                          <h5 class="card-title">Active Cases</h5>
-                          <p class="card-text">
-                            <span id="total_active"></span>
-                          </p>
-                        </div>
-                        <div class="card-footer">
-                          <small>
-                            Critical cases: <span id="total_critical"></span>
-                          </small>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
-                      <div class="card bg-secondary text-white shadow-lg rounded h-100">
-                        <div class="card-body">
-                          <h5 class="card-title">Total Tests</h5>
-                          <p class="card-text">
-                            <span id="total_tests"></span>
-                          </p>
-                        </div>
-                        <div class="card-footer">
-                          <small>
-                            Tests per million: <span id="total_tests_per_million"></span>
-                          </small>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
-                  </div>
-                  <!-- ./row -->
+                            <section class="jumbotron text-center">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
+                                            <div class="card bg-info text-white shadow-lg rounded h-100">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Total Cases</h5>
+                                                    <p class="card-text">
+                                                        <span id="total_cases"></span>
+                                                    </p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <small>
+                                                        Today's cases: <span id="today_cases"></span>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
+                                            <div class="card bg-danger text-white shadow-lg rounded h-100">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Total Deaths</h5>
+                                                    <p class="card-text">
+                                                        <span id="total_deaths"></span>
+                                                        <small>
+                                                            (<span id="total_deaths_percent"></span>%)
+                                                        </small>
+                                                    </p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <small>
+                                                        Today's deaths: <span id="today_deaths"></span>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
+                                            <div class="card bg-dark text-white shadow-lg rounded h-100">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Cases / Million</h5>
+                                                    <p class="card-text">
+                                                        <span id="total_cases_per_million"></span>
+                                                    </p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <small>
+                                                        Deaths / Million: <span id="total_deaths_per_million"></span>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
+                                            <div class="card bg-success text-white shadow-lg rounded h-100">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Total Recovered</h5>
+                                                    <p class="card-text">
+                                                        <span id="total_recovered"></span>
+                                                        <small>
+                                                            (<span id="total_recovered_percent"></span>%)
+                                                        </small>
+                                                    </p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <small>
+                                                        Affected Countries: <span id="total_countries"></span>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
+                                            <div class="card bg-warning text-white shadow-lg rounded h-100">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Active Cases</h5>
+                                                    <p class="card-text">
+                                                        <span id="total_active"></span>
+                                                    </p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <small>
+                                                        Critical cases: <span id="total_critical"></span>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
+                                            <div class="card bg-secondary text-white shadow-lg rounded h-100">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Total Tests</h5>
+                                                    <p class="card-text">
+                                                        <span id="total_tests"></span>
+                                                    </p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <small>
+                                                        Tests per million: <span id="total_tests_per_million"></span>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
+                                    </div>
+                                    <!-- ./row -->
 
 
-                </div>
-              </section>
-              <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 mb-4">
-                  <div class="chartjs_mobile_canvas">
-                    <canvas id="summary_cases_chart" class="shadow-lg border"></canvas>
-                    <!-- ./summary_cases_chart -->
-                  </div>
-                </div>
-                <!-- ./col-md-6 -->
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 mb-4">
-                  <div class="chartjs_mobile_canvas">
-                    <canvas id="summary_death_chart" class="shadow-lg border"></canvas>
-                    <!-- ./summary_death_chart -->
-                  </div>
-                </div>
-                <!-- ./col-md-6 -->
-              </div>
-              <!-- ./row -->
-              <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 mb-4">
-                  <div class="chartjs_mobile_canvas">
-                    <canvas id="summary_active_chart" class="shadow-lg border"></canvas>
-                    <!-- ./summary_active_chart -->
-                  </div>
-                </div>
-                <!-- ./col-md-6 -->
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 mb-4">
-                  <div class="chartjs_mobile_canvas">
-                    <canvas id="summary_recovered_chart" class="shadow-lg border"></canvas>
-                    <!-- ./summary_recovered_chart -->
-                  </div>
-                </div>
-                <!-- ./col-md-6 -->
-              </div>
-              <!-- ./row -->
-            </div>
-            <!-- ./summary -->
-            <div class="tab-pane fade" id="global-data" role="tabpanel" aria-labelledby="global-data-tab">
-              <div class="row">
-                <div class="col-md-12">
-
-                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h3>Worldwide COVID-19 Data with Instant Search Option</h3>
-                  </div>
-
-                  <div class="table-responsive">
-                    <table id="corona_country_table" class="table table-striped table-bordered table-sm">
-                      <thead class="thead-dark">
-                        <tr>
-                          <th class="no-sort">Flag</th>
-                          <th>Country</th>
-                          <th>Cases</th>
-                          <th class="table-info">Today Cases</th>
-                          <th>Deaths</th>
-                          <th class="table-danger">Today Deaths</th>
-                          <th>Tests</th>
-                          <th>Active</th>
-                          <th>Recovered</th>
-                          <th>Critical</th>
-                          <th>Cases / Million</th>
-                          <th>Deaths / Million</th>
-                          <th>Tests / Million</th>
-                        </tr>
-                      </thead>
-                      <tbody id="corona_country_rows">
-                      </tbody>
-                    </table>
-                  </div>
-                  <!-- ./table-responsive -->
-                </div>
-                <!-- ./col-md-12 -->
-              </div>
-              <!-- ./row -->
-            </div>
-            <!-- ./list-global-data -->
-            <div class="tab-pane fade" id="worldmap-cases" role="tabpanel" aria-labelledby="worldmap-cases-tab">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h3>
-                      COVID-19 World Map(Total Confirmed Cases)
-                    </h3>
-                  </div>
-                  <p class="lead text-muted">
-                    Mouse over any country to see total confirmed cases and click to see country's details.
-                  </p>
-                  <div class="worldmap_legend_wrapper d-flex justify-content-end align-items-center flex-wrap flex-md-nowrap align-items-center text-white">
-                    <span id="confirmed_legend_start_value" class="world_map_legend_value"></span>
-                    <div class="worldmap_legend" id="world_map_confirmed_legend">
-                    </div>
-                    <span id="confirmed_legend_end_value" class="world_map_legend_value"></span>
-                  </div>
-
-                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                    <div class="world_map" id="corona_world_map_cases"></div>
-                  </div>
-                </div>
-                <!-- ./col-md-12 -->
-              </div>
-              <!-- ./row -->
-              <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                  <div class="chartjs_mobile_canvas">
-                    <canvas id="worldmap_confirmed_chart" class="shadow-lg border"></canvas>
-                    <!-- ./worldmap_confirmed_chart -->
-                  </div>
-                </div>
-                <!-- ./col-md-12 -->
-              </div>
-              <!-- ./row -->
-            </div>
-            <!-- ./list-worldmap-cases -->
-            <div class="tab-pane fade" id="worldmap-deaths" role="tabpanel" aria-labelledby="worldmap-deaths-tab">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h3>
-                      COVID-19 World Map(Total Deaths)
-                    </h3>
-                  </div>
-                  <p class="lead text-muted">
-                    Mouse over any country to see total deaths and click to see country's details.
-                  </p>
-                  <div class="worldmap_legend_wrapper d-flex justify-content-end align-items-center flex-wrap flex-md-nowrap align-items-center text-white">
-                    <span id="deaths_legend_start_value" class="world_map_legend_value"></span>
-                    <div class="worldmap_legend" id="world_map_deaths_legend"></div>
-                    <span id="deaths_legend_end_value" class="world_map_legend_value"></span>
-                  </div>
-
-                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                    <div class="world_map" id="corona_world_map_deaths"></div>
-                  </div>
-                </div>
-                <!-- ./col-md-12 -->
-              </div>
-              <!-- ./row -->
-              <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                  <div class="chartjs_mobile_canvas">
-                    <canvas id="worldmap_deaths_chart" class="shadow-lg border"></canvas>
-                    <!-- ./worldmap_deaths_chart -->
-                  </div>
-                </div>
-                <!-- ./col-md-12 -->
-              </div>
-              <!-- ./row -->
-
-            </div>
-            <!-- ./list-worldmap-deaths -->
-            <div class="tab-pane fade" id="worldmap-active" role="tabpanel" aria-labelledby="worldmap-active-tab">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h3>
-                      COVID-19 World Map(Total Active)
-                    </h3>
-                  </div>
-                  <p class="lead text-muted">
-                    Mouse over any country to see total active cases and click to see country's details.
-                  </p>
-                  <div class="worldmap_legend_wrapper d-flex justify-content-end align-items-center flex-wrap flex-md-nowrap align-items-center text-white">
-                    <span id="active_legend_start_value" class="world_map_legend_value"></span>
-                    <div class="worldmap_legend" id="world_map_active_legend">
-                    </div>
-                    <span id="active_legend_end_value" class="world_map_legend_value"></span>
-                  </div>
-
-                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                    <div class="world_map" id="corona_world_map_active"></div>
-                  </div>
-                </div>
-                <!-- ./col-md-12 -->
-              </div>
-              <!-- ./row -->
-              <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                  <div class="chartjs_mobile_canvas">
-                    <canvas id="worldmap_active_chart" class="shadow-lg border"></canvas>
-                    <!-- ./worldmap_active_chart -->
-                  </div>
-                </div>
-                <!-- ./col-md-12 -->
-              </div>
-              <!-- ./row -->
-
-            </div>
-            <!-- ./list-worldmap-active -->
-            <div class="tab-pane fade" id="worldmap-recovered" role="tabpanel" aria-labelledby="worldmap-recovered-tab">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h3>
-                      COVID-19 World Map(Total Recovered)
-                    </h3>
-                  </div>
-                  <p class="lead text-muted">
-                    Mouse over any country to see total recovered cases and click to see country's details.
-                  </p>
-                  <div class="worldmap_legend_wrapper d-flex justify-content-end align-items-center flex-wrap flex-md-nowrap align-items-center text-white">
-                    <span id="recovered_legend_start_value" class="world_map_legend_value"></span>
-                    <div class="worldmap_legend" id="world_map_recovered_legend">
-                    </div>
-                    <span id="recovered_legend_end_value" class="world_map_legend_value"></span>
-                  </div>
-                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                    <div class="world_map" id="corona_world_map_recovered"></div>
-                  </div>
-                </div>
-                <!-- ./col-md-12 -->
-              </div>
-              <!-- ./row -->
-              <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                  <div class="chartjs_mobile_canvas">
-                    <canvas id="worldmap_recovered_chart" class="shadow-lg border"></canvas>
-                    <!-- ./worldmap_recovered_chart -->
-                  </div>
-                </div>
-                <!-- ./col-md-12 -->
-              </div>
-              <!-- ./row -->
-
-            </div>
-            <!-- ./list-worldmap-recovered -->
-            <div class="tab-pane fade" id="search-country-data" role="tabpanel" aria-labelledby="search-country-data-tab">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h3>
-                      Countrywise COVID-19 Status
-                    </h3>
-                  </div>
-
-                  <div class="card bg-dark text-white">
-                    <div class="card-header">
-                      Select a country to see the current COVID-19 status
-                    </div>
-                    <div class="card-body">
-                      <form>
-                        <div class="form-group">
-                          <select class="form-control" id="country_search" class="form-control">
-                          </select>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-
-                  <div id="country_search_result">
-                    <div class="row mt-4 center">
-                      <div class="col-md-12">
-                        <div class="card mb-3">
-                          <h5 class="card-header">
-                            <img src="" alt="" id="country_flag_searched_country">
-                            <span id="country_name_searched_country"></span>
-                          </h5>
-                          <div class="card-body">
+                                </div>
+                            </section>
                             <div class="row">
-                              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
-                                <div class="card bg-info text-white shadow-lg rounded h-100">
-                                  <div class="card-body">
-                                    <h5 class="card-title">Total Cases</h5>
-                                    <p class="card-text">
-                                      <span id="total_cases_searched_country"></span>
-                                    </p>
-                                  </div>
-                                  <div class="card-footer">
-                                    <small>
-                                      Today's cases: <span id="today_cases_searched_country"></span>
-                                    </small>
-                                  </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 mb-4">
+                                    <div class="chartjs_mobile_canvas">
+                                        <canvas id="summary_cases_chart" class="shadow-lg border"></canvas>
+                                        <!-- ./summary_cases_chart -->
+                                    </div>
                                 </div>
-                              </div>
-                              <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
-                              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
-                                <div class="card bg-danger text-white shadow-lg rounded h-100">
-                                  <div class="card-body">
-                                    <h5 class="card-title">Total Deaths</h5>
-                                    <p class="card-text">
-                                      <span id="total_deaths_searched_country"></span>
-                                      <small>
-                                        (<span id="total_deaths_percent_searched_country"></span>%)
-                                      </small>
-                                    </p>
-                                  </div>
-                                  <div class="card-footer">
-                                    <small>
-                                      Today's deaths: <span id="today_deaths_searched_country"></span>
-                                    </small>
-                                  </div>
+                                <!-- ./col-md-6 -->
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 mb-4">
+                                    <div class="chartjs_mobile_canvas">
+                                        <canvas id="summary_death_chart" class="shadow-lg border"></canvas>
+                                        <!-- ./summary_death_chart -->
+                                    </div>
                                 </div>
-                              </div>
-                              <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
-                              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
-                                <div class="card bg-dark text-white shadow-lg rounded h-100">
-                                  <div class="card-body">
-                                    <h5 class="card-title">Cases / Million</h5>
-                                    <p class="card-text">
-                                      <span id="total_cases_per_million_searched_country"></span>
-                                    </p>
-                                  </div>
-                                  <div class="card-footer">
-                                    <small>
-                                      Deaths / Million: <span id="total_deaths_per_million_searched_country"></span>
-                                    </small>
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
-
-                              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
-                                <div class="card bg-success text-white shadow-lg rounded h-100">
-                                  <div class="card-body">
-                                    <h5 class="card-title">Total Recovered</h5>
-                                    <p class="card-text">
-                                      <span id="total_recovered_searched_country"></span>
-                                    </p>
-                                  </div>
-                                  <div class="card-footer">
-                                    <small>
-                                      Recover rate: <span id="total_recovered_percent_searched_country"></span>%
-                                    </small>
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
-                              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
-                                <div class="card bg-warning text-white shadow-lg rounded h-100">
-                                  <div class="card-body">
-                                    <h5 class="card-title">Active Cases</h5>
-                                    <p class="card-text">
-                                      <span id="total_active_searched_country"></span>
-                                    </p>
-                                  </div>
-                                  <div class="card-footer">
-                                    <small>
-                                      Critical Cases: <span id="total_critical_searched_country"></span>
-                                    </small>
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
-                              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
-                                <div class="card bg-secondary text-white shadow-lg rounded h-100">
-                                  <div class="card-body">
-                                    <h5 class="card-title">Total Tests</h5>
-                                    <p class="card-text">
-                                      <span id="total_tests_searched_country"></span>
-                                    </p>
-                                  </div>
-                                  <div class="card-footer">
-                                    <small>
-                                      Tests per million: <span id="total_tests_per_million_searched_country"></span>
-                                    </small>
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
+                                <!-- ./col-md-6 -->
                             </div>
-                            <!-- ./row in card body -->
-                          </div>
-                          <!-- ./card-body -->
-                          <div class="card-footer">
-                            <div class="row small text-justify text-muted">
-                              <div class="col-sm-4 mb-2 text-sm-left">
-                                First Confirmed Case: <i class="fa fa-calendar"></i> <span id="first_case_date_searched_country"></span>
-                              </div>
-                              <div class="col-sm-4 mb-2 text-sm-center">
-                                First Death Case: <i class="fa fa-calendar"></i> <span id="first_death_date_searched_country"></span>
-                              </div>
-                              <div class="col-sm-4 mb-2 text-sm-right">
-                                First Recovery Case: <i class="fa fa-calendar"></i> <span id="first_recovery_date_searched_country"></span>
-                              </div>
+                            <!-- ./row -->
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 mb-4">
+                                    <div class="chartjs_mobile_canvas">
+                                        <canvas id="summary_active_chart" class="shadow-lg border"></canvas>
+                                        <!-- ./summary_active_chart -->
+                                    </div>
+                                </div>
+                                <!-- ./col-md-6 -->
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 mb-4">
+                                    <div class="chartjs_mobile_canvas">
+                                        <canvas id="summary_recovered_chart" class="shadow-lg border"></canvas>
+                                        <!-- ./summary_recovered_chart -->
+                                    </div>
+                                </div>
+                                <!-- ./col-md-6 -->
                             </div>
-                          </div>
-                          <!-- ./card-footer -->
+                            <!-- ./row -->
                         </div>
-                        <!-- ./card -->
-                      </div>
-                      <!-- ./col-md-12 -->
-                    </div>
-                    <!-- ./row -->
+                        <!-- ./summary -->
+                        <div class="tab-pane fade" id="global-data" role="tabpanel" aria-labelledby="global-data-tab">
+                            <div class="row">
+                                <div class="col-md-12">
 
-                    <div class="row mb-4">
-                      <div class="col-md-12">
-                        <div class="chartjs_mobile_canvas">
-                          <canvas id="country_cases_chart" class="shadow-lg border"></canvas>
-                          <!-- ./country_cases_chart -->
+                                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                        <h3>Worldwide COVID-19 Data with Instant Search Option</h3>
+                                    </div>
+
+                                    <div class="table-responsive">
+                                        <table id="corona_country_table" class="table table-striped table-bordered table-sm">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th class="no-sort">Flag</th>
+                                                    <th>Country</th>
+                                                    <th>Cases</th>
+                                                    <th class="table-info">Today Cases</th>
+                                                    <th>Deaths</th>
+                                                    <th class="table-danger">Today Deaths</th>
+                                                    <th>Tests</th>
+                                                    <th>Active</th>
+                                                    <th>Recovered</th>
+                                                    <th>Critical</th>
+                                                    <th>Cases / Million</th>
+                                                    <th>Deaths / Million</th>
+                                                    <th>Tests / Million</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="corona_country_rows">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- ./table-responsive -->
+                                </div>
+                                <!-- ./col-md-12 -->
+                            </div>
+                            <!-- ./row -->
                         </div>
-                      </div>
-                      <!-- ./col-md-12 -->
-                    </div>
-                    <div class="row mb-4">
-                      <div class="col-md-12">
-                        <div class="chartjs_mobile_canvas">
-                          <canvas id="country_death_chart" class="shadow-lg border"></canvas>
-                          <!-- ./country_death_chart -->
+                        <!-- ./list-global-data -->
+                        <div class="tab-pane fade" id="worldmap-cases" role="tabpanel" aria-labelledby="worldmap-cases-tab">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                        <h3>
+                                            COVID-19 World Map(Total Confirmed Cases)
+                                        </h3>
+                                    </div>
+                                    <p class="lead text-muted">
+                                        Mouse over any country to see total confirmed cases and click to see country's details.
+                                    </p>
+                                    <div class="worldmap_legend_wrapper d-flex justify-content-end align-items-center flex-wrap flex-md-nowrap align-items-center text-white">
+                                        <span id="confirmed_legend_start_value" class="world_map_legend_value"></span>
+                                        <div class="worldmap_legend" id="world_map_confirmed_legend">
+                                        </div>
+                                        <span id="confirmed_legend_end_value" class="world_map_legend_value"></span>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+                                        <div class="world_map" id="corona_world_map_cases"></div>
+                                    </div>
+                                </div>
+                                <!-- ./col-md-12 -->
+                            </div>
+                            <!-- ./row -->
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="chartjs_mobile_canvas">
+                                        <canvas id="worldmap_confirmed_chart" class="shadow-lg border"></canvas>
+                                        <!-- ./worldmap_confirmed_chart -->
+                                    </div>
+                                </div>
+                                <!-- ./col-md-12 -->
+                            </div>
+                            <!-- ./row -->
                         </div>
-                      </div>
-                      <!-- ./col-md-12 -->
-                    </div>
-                    <div class="row mb-4">
-                      <div class="col-md-12">
-                        <div class="chartjs_mobile_canvas">
-                          <canvas id="country_recovered_chart" class="shadow-lg border"></canvas>
-                          <!-- ./country_recovered_chart -->
+                        <!-- ./list-worldmap-cases -->
+                        <div class="tab-pane fade" id="worldmap-deaths" role="tabpanel" aria-labelledby="worldmap-deaths-tab">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                        <h3>
+                                            COVID-19 World Map(Total Deaths)
+                                        </h3>
+                                    </div>
+                                    <p class="lead text-muted">
+                                        Mouse over any country to see total deaths and click to see country's details.
+                                    </p>
+                                    <div class="worldmap_legend_wrapper d-flex justify-content-end align-items-center flex-wrap flex-md-nowrap align-items-center text-white">
+                                        <span id="deaths_legend_start_value" class="world_map_legend_value"></span>
+                                        <div class="worldmap_legend" id="world_map_deaths_legend"></div>
+                                        <span id="deaths_legend_end_value" class="world_map_legend_value"></span>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+                                        <div class="world_map" id="corona_world_map_deaths"></div>
+                                    </div>
+                                </div>
+                                <!-- ./col-md-12 -->
+                            </div>
+                            <!-- ./row -->
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="chartjs_mobile_canvas">
+                                        <canvas id="worldmap_deaths_chart" class="shadow-lg border"></canvas>
+                                        <!-- ./worldmap_deaths_chart -->
+                                    </div>
+                                </div>
+                                <!-- ./col-md-12 -->
+                            </div>
+                            <!-- ./row -->
+
                         </div>
-                      </div>
-                      <!-- ./col-md-12 -->
-                    </div>
+                        <!-- ./list-worldmap-deaths -->
+                        <div class="tab-pane fade" id="worldmap-active" role="tabpanel" aria-labelledby="worldmap-active-tab">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                        <h3>
+                                            COVID-19 World Map(Total Active)
+                                        </h3>
+                                    </div>
+                                    <p class="lead text-muted">
+                                        Mouse over any country to see total active cases and click to see country's details.
+                                    </p>
+                                    <div class="worldmap_legend_wrapper d-flex justify-content-end align-items-center flex-wrap flex-md-nowrap align-items-center text-white">
+                                        <span id="active_legend_start_value" class="world_map_legend_value"></span>
+                                        <div class="worldmap_legend" id="world_map_active_legend">
+                                        </div>
+                                        <span id="active_legend_end_value" class="world_map_legend_value"></span>
+                                    </div>
 
+                                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+                                        <div class="world_map" id="corona_world_map_active"></div>
+                                    </div>
+                                </div>
+                                <!-- ./col-md-12 -->
+                            </div>
+                            <!-- ./row -->
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="chartjs_mobile_canvas">
+                                        <canvas id="worldmap_active_chart" class="shadow-lg border"></canvas>
+                                        <!-- ./worldmap_active_chart -->
+                                    </div>
+                                </div>
+                                <!-- ./col-md-12 -->
+                            </div>
+                            <!-- ./row -->
 
-                    <!-- ./country_search_result -->
-                  </div>
-                  <!-- ./col-md-12 -->
-                </div>
-                <!-- ./row -->
-              </div>
-              <!-- ./list-search-country-data -->
-            </div>
-            <!-- ./search-country-data -->
-            <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
-              <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h3>
-                  About COVID-19 Dashboard
-                </h3>
-              </div>
+                        </div>
+                        <!-- ./list-worldmap-active -->
+                        <div class="tab-pane fade" id="worldmap-recovered" role="tabpanel" aria-labelledby="worldmap-recovered-tab">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                        <h3>
+                                            COVID-19 World Map(Total Recovered)
+                                        </h3>
+                                    </div>
+                                    <p class="lead text-muted">
+                                        Mouse over any country to see total recovered cases and click to see country's details.
+                                    </p>
+                                    <div class="worldmap_legend_wrapper d-flex justify-content-end align-items-center flex-wrap flex-md-nowrap align-items-center text-white">
+                                        <span id="recovered_legend_start_value" class="world_map_legend_value"></span>
+                                        <div class="worldmap_legend" id="world_map_recovered_legend">
+                                        </div>
+                                        <span id="recovered_legend_end_value" class="world_map_legend_value"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+                                        <div class="world_map" id="corona_world_map_recovered"></div>
+                                    </div>
+                                </div>
+                                <!-- ./col-md-12 -->
+                            </div>
+                            <!-- ./row -->
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="chartjs_mobile_canvas">
+                                        <canvas id="worldmap_recovered_chart" class="shadow-lg border"></canvas>
+                                        <!-- ./worldmap_recovered_chart -->
+                                    </div>
+                                </div>
+                                <!-- ./col-md-12 -->
+                            </div>
+                            <!-- ./row -->
 
-              <section class="jumbotron custom-jumbotron">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="lead">
-                        <h4>A responsive data visualization dashboard that shows current worldwide scenario of COVID-19</h4>
-                        <hr>
-                        <p>
-                          This is an open source project and we will welcome any contributions.
-                          Source code URL: <a class="text-decoration-none" href="https://github.com/arsho/COVID-19" title="COVID-19 Source Code">https://github.com/arsho/COVID-19</a>
-                        </p>
+                        </div>
+                        <!-- ./list-worldmap-recovered -->
+                        <div class="tab-pane fade" id="search-country-data" role="tabpanel" aria-labelledby="search-country-data-tab">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                        <h3>
+                                            Countrywise COVID-19 Status
+                                        </h3>
+                                    </div>
 
-                        <h4 class="pt-3">Developers</h4>
+                                    <div class="card bg-dark text-white">
+                                        <div class="card-header">
+                                            Select a country to see the current COVID-19 status
+                                        </div>
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <select class="form-control" id="country_search" class="form-control">
+                                                    </select>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
 
-                        <div class="row pb-3">
-                          <div class="col-12 col-sm-6">
-                            <div class="card text-white bg-secondary mb-3 shadow-lg border border-secondary">
-                              <div class="card-body">
-                                <h5 class="card-title">Ahmedur Rahman Shovon</h5>
-                                <hr>
-                                <div class="row small">
-                                  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                    <a class="text-light text-decoration-none" target="_blank" href="https://arshovon.com/" title="Visit Ahmedur Rahman Shovon's Website"><i class="fa fa-link"></i> arshovon.com</a>
-                                  </div>
-                                  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                    <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/in/arshovon/" title="Visit Ahmedur Rahman Shovon's Linkedin Profile"><i class="fab fa-linkedin"></i> arshovon</a>
-                                  </div>
-                                  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                    <a class="text-light text-decoration-none" target="_blank" href="https://github.com/arsho" title="Visit Ahmedur Rahman Shovon's Github Profile"><i class="fab fa-github"></i> arsho</a>
-                                  </div>
-                                  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                    <a class="text-light text-decoration-none" target="_blank" href="https://stackoverflow.com/users/3129414/arsho" title="Visit Ahmedur Rahman Shovon's Stackoverflow Profile"><i class="fab fa-stack-overflow"></i> arsho</a>
-                                  </div>
+                                    <div id="country_search_result">
+                                        <div class="row mt-4 center">
+                                            <div class="col-md-12">
+                                                <div class="card mb-3">
+                                                    <h5 class="card-header">
+                                                        <img src="" alt="" id="country_flag_searched_country">
+                                                        <span id="country_name_searched_country"></span>
+                                                    </h5>
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
+                                                                <div class="card bg-info text-white shadow-lg rounded h-100">
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">Total Cases</h5>
+                                                                        <p class="card-text">
+                                                                            <span id="total_cases_searched_country"></span>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="card-footer">
+                                                                        <small>
+                                                                            Today's cases: <span id="today_cases_searched_country"></span>
+                                                                        </small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
+                                                                <div class="card bg-danger text-white shadow-lg rounded h-100">
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">Total Deaths</h5>
+                                                                        <p class="card-text">
+                                                                            <span id="total_deaths_searched_country"></span>
+                                                                            <small>
+                                                                                (<span id="total_deaths_percent_searched_country"></span>%)
+                                                                            </small>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="card-footer">
+                                                                        <small>
+                                                                            Today's deaths: <span id="today_deaths_searched_country"></span>
+                                                                        </small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
+                                                                <div class="card bg-dark text-white shadow-lg rounded h-100">
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">Cases / Million</h5>
+                                                                        <p class="card-text">
+                                                                            <span id="total_cases_per_million_searched_country"></span>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="card-footer">
+                                                                        <small>
+                                                                            Deaths / Million: <span id="total_deaths_per_million_searched_country"></span>
+                                                                        </small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
+
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
+                                                                <div class="card bg-success text-white shadow-lg rounded h-100">
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">Total Recovered</h5>
+                                                                        <p class="card-text">
+                                                                            <span id="total_recovered_searched_country"></span>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="card-footer">
+                                                                        <small>
+                                                                            Recover rate: <span id="total_recovered_percent_searched_country"></span>%
+                                                                        </small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
+                                                                <div class="card bg-warning text-white shadow-lg rounded h-100">
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">Active Cases</h5>
+                                                                        <p class="card-text">
+                                                                            <span id="total_active_searched_country"></span>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="card-footer">
+                                                                        <small>
+                                                                            Critical Cases: <span id="total_critical_searched_country"></span>
+                                                                        </small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 mb-2">
+                                                                <div class="card bg-secondary text-white shadow-lg rounded h-100">
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">Total Tests</h5>
+                                                                        <p class="card-text">
+                                                                            <span id="total_tests_searched_country"></span>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="card-footer">
+                                                                        <small>
+                                                                            Tests per million: <span id="total_tests_per_million_searched_country"></span>
+                                                                        </small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- ./col-12 ./col-sm-12 ./col-md-12 ./col-lg-12 ./col-xl-2 ./mb-2 -->
+                                                        </div>
+                                                        <!-- ./row in card body -->
+                                                    </div>
+                                                    <!-- ./card-body -->
+                                                    <div class="card-footer">
+                                                        <div class="row small text-justify text-muted">
+                                                            <div class="col-sm-4 mb-2 text-sm-left">
+                                                                First Confirmed Case: <i class="fa fa-calendar"></i> <span id="first_case_date_searched_country"></span>
+                                                            </div>
+                                                            <div class="col-sm-4 mb-2 text-sm-center">
+                                                                First Death Case: <i class="fa fa-calendar"></i> <span id="first_death_date_searched_country"></span>
+                                                            </div>
+                                                            <div class="col-sm-4 mb-2 text-sm-right">
+                                                                First Vaccination Date: <i class="fa fa-calendar"></i> <span id="first_vaccine_date_searched_country"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- ./card-footer -->
+                                                </div>
+                                                <!-- ./card -->
+                                            </div>
+                                            <!-- ./col-md-12 -->
+                                        </div>
+                                        <!-- ./row -->
+
+                                        <div class="row mb-4">
+                                            <div class="col-md-12">
+                                                <div class="chartjs_mobile_canvas">
+                                                    <canvas id="country_cases_chart" class="shadow-lg border"></canvas>
+                                                    <!-- ./country_cases_chart -->
+                                                </div>
+                                            </div>
+                                            <!-- ./col-md-12 -->
+                                        </div>
+                                        <div class="row mb-4">
+                                            <div class="col-md-12">
+                                                <div class="chartjs_mobile_canvas">
+                                                    <canvas id="country_death_chart" class="shadow-lg border"></canvas>
+                                                    <!-- ./country_death_chart -->
+                                                </div>
+                                            </div>
+                                            <!-- ./col-md-12 -->
+                                        </div>
+                                        <div class="row mb-4">
+                                            <div class="col-md-12">
+                                                <div class="chartjs_mobile_canvas">
+                                                    <canvas id="country_recovered_chart" class="shadow-lg border"></canvas>
+                                                    <!-- ./country_recovered_chart -->
+                                                </div>
+                                            </div>
+                                            <!-- ./col-md-12 -->
+                                        </div>
+                                        <div class="row mb-4">
+                                            <div class="col-md-12">
+                                                <div class="chartjs_mobile_canvas">
+                                                    <canvas id="country_vaccine_chart" class="shadow-lg border"></canvas>
+                                                    <!-- ./country_vaccine_chart -->
+                                                </div>
+                                            </div>
+                                            <!-- ./col-md-12 -->
+                                        </div>
+
+                                        <!-- Country daily reports starts -->
+                                        <div class="row mb-4">
+                                            <div class="col-md-12">
+                                                <div class="chartjs_mobile_canvas">
+                                                    <canvas id="country_daily_cases_chart" class="shadow-lg border"></canvas>
+                                                    <!-- ./country_daily_cases_chart -->
+                                                </div>
+                                            </div>
+                                            <!-- ./col-md-12 -->
+                                        </div>
+                                        <div class="row mb-4">
+                                            <div class="col-md-12">
+                                                <div class="chartjs_mobile_canvas">
+                                                    <canvas id="country_daily_death_chart" class="shadow-lg border"></canvas>
+                                                    <!-- ./country_daily_death_chart -->
+                                                </div>
+                                            </div>
+                                            <!-- ./col-md-12 -->
+                                        </div>
+                                        <div class="row mb-4">
+                                            <div class="col-md-12">
+                                                <div class="chartjs_mobile_canvas">
+                                                    <canvas id="country_daily_recovered_chart" class="shadow-lg border"></canvas>
+                                                    <!-- ./country_daily_recovered_chart -->
+                                                </div>
+                                            </div>
+                                            <!-- ./col-md-12 -->
+                                        </div>
+                                        <div class="row mb-4">
+                                            <div class="col-md-12">
+                                                <div class="chartjs_mobile_canvas">
+                                                    <canvas id="country_daily_vaccine_chart" class="shadow-lg border"></canvas>
+                                                    <!-- ./country_daily_vaccine_chart -->
+                                                </div>
+                                            </div>
+                                            <!-- ./col-md-12 -->
+                                        </div>
+                                        <!-- Country daily reports ends -->
+
+                                        <!-- ./country_search_result -->
+                                    </div>
+                                    <!-- ./col-md-12 -->
                                 </div>
                                 <!-- ./row -->
-                              </div>
-                              <!-- ./card-body -->
                             </div>
-                          </div>
-                          <div class="col-12 col-sm-6">
-                            <div class="card text-white bg-info mb-3 shadow-lg border border-info">
-                              <div class="card-body">
-                                <h5 class="card-title">Hasan Mahmud</h5>
-                                <hr>
-                                <div class="row small">
-                                  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                    <a class="text-light text-decoration-none" target="_blank" href="https://hmsajal.github.io/" title="Visit Hasan Mahmud's Website"><i class="fa fa-link"></i> hmsajal.github.io</a>
-                                  </div>
-                                  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                    <a class="text-light text-decoration-none" target="_blank" href="https://linkedin.com/in/hmsajal" title="Visit Hasan Mahmud's Linkedin Profile"><i class="fab fa-linkedin"></i> hmsajal</a>
-                                  </div>
-                                  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                    <a class="text-light text-decoration-none" target="_blank" href="https://github.com/hmsajal" title="Visit Hasan Mahmud's Github Profile"><i class="fab fa-github"></i> hmsajal</a>
-                                  </div>
-                                  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                                    <a class="text-light text-decoration-none" target="_blank" href="https://angel.co/u/hmsajal" title="Visit Hasan Mahmud's Angellist Profile"><i class="fab fa-angellist"></i> hmsajal</a>
-                                  </div>
-                                </div>
-                                <!-- ./row -->
-
-                              </div>
-                            </div>
-                          </div>
+                            <!-- ./list-search-country-data -->
                         </div>
+                        <!-- ./search-country-data -->
+                        <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <h3>
+                                    About C-19 Dashboard
+                                </h3>
+                            </div>
 
-                        If you have any queries, you can send an email to:
-                        <ul>
-                          <li>
-                            shovon.sylhet@gmail.com
-                          </li>
-                          <li>
-                            sajal.hm@gmail.com
-                          </li>
-                        </ul>
-                      </div>
+                            <section class="jumbotron custom-jumbotron">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="lead">
+                                                <h4>C-19 is a data visualization dashboard to show the current situation of COVID-19 worldwide.</h4>
+                                                <hr>
+                                                <p>
+                                                    This is an open source project and we will welcome any contributions.
+                                                    Source code URL: <a class="text-decoration-none" href="https://github.com/arsho/COVID-19" title="COVID-19 Source Code">https://github.com/arsho/COVID-19</a>
+                                                </p>
+
+                                                <h4>Features</h4>
+                                                <ul>
+                                                    <li>Summary of worldwide status of COVID-19 specifying number of affected countries, total cases, total deaths and total recovered cases, total tests, total deaths per million, total cases per million, and total tests per million.</li>
+                                                    <li>Sortable and instantly searchable data table of all countries.</li>
+                                                    <li>World map of confirmed cases and top countries chart with most confirmed cases.</li>
+                                                    <li>World map of death cases and top countries chart with most death cases.</li>
+                                                    <li>World map of active cases and top countries chart with most active cases.</li>
+                                                    <li>World map of recovered cases and top countries chart with most recovered cases.</li>
+                                                    <li>View details of a specific country:
+                                                        <ul>
+                                                            <li>Summary information of the country.</li>
+                                                            <li>Line charts for total confirmed cases, total death cases, total recovered cases, total vaccinations of the searched country.</li>
+                                                            <li>Bar charts for daily confirmed cases, daily death cases, daily recovered cases, daily vaccinations of the searched country.</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+
+
+                                                <h4 class="pt-3">Developers</h4>
+
+                                                <div class="row pb-3">
+                                                    <div class="col-12 col-sm-6">
+                                                        <div class="card text-white bg-secondary mb-3 shadow-lg border border-secondary">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Ahmedur Rahman Shovon</h5>
+                                                                <hr>
+                                                                <div class="row small">
+                                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                                        <a class="text-light text-decoration-none" target="_blank" href="https://arshovon.com/" title="Visit Ahmedur Rahman Shovon's Website"><i class="fa fa-link"></i> arshovon.com</a>
+                                                                    </div>
+                                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                                        <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/in/arshovon/" title="Visit Ahmedur Rahman Shovon's Linkedin Profile"><i class="fab fa-linkedin"></i> arshovon</a>
+                                                                    </div>
+                                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                                        <a class="text-light text-decoration-none" target="_blank" href="https://github.com/arsho" title="Visit Ahmedur Rahman Shovon's Github Profile"><i class="fab fa-github"></i> arsho</a>
+                                                                    </div>
+                                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                                        <a class="text-light text-decoration-none" target="_blank" href="https://stackoverflow.com/users/3129414/arsho" title="Visit Ahmedur Rahman Shovon's Stackoverflow Profile"><i class="fab fa-stack-overflow"></i> arsho</a>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- ./row -->
+                                                            </div>
+                                                            <!-- ./card-body -->
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6">
+                                                        <div class="card text-white bg-info mb-3 shadow-lg border border-info">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Hasan Mahmud</h5>
+                                                                <hr>
+                                                                <div class="row small">
+                                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                                        <a class="text-light text-decoration-none" target="_blank" href="https://hmsajal.github.io/" title="Visit Hasan Mahmud's Website"><i class="fa fa-link"></i> hmsajal.github.io</a>
+                                                                    </div>
+                                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                                        <a class="text-light text-decoration-none" target="_blank" href="https://linkedin.com/in/hmsajal" title="Visit Hasan Mahmud's Linkedin Profile"><i class="fab fa-linkedin"></i> hmsajal</a>
+                                                                    </div>
+                                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                                        <a class="text-light text-decoration-none" target="_blank" href="https://github.com/hmsajal" title="Visit Hasan Mahmud's Github Profile"><i class="fab fa-github"></i> hmsajal</a>
+                                                                    </div>
+                                                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                                        <a class="text-light text-decoration-none" target="_blank" href="https://angel.co/u/hmsajal" title="Visit Hasan Mahmud's Angellist Profile"><i class="fab fa-angellist"></i> hmsajal</a>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- ./row -->
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                If you have any queries, you can send an email to:
+                                                <ul>
+                                                    <li>
+                                                        shovon.sylhet@gmail.com
+                                                    </li>
+                                                    <li>
+                                                        sajal.hm@gmail.com
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ./row -->
+                                </div>
+                            </section>
+                        </div>
+                        <!-- ./about -->
+
                     </div>
-                  </div>
-                  <!-- ./row -->
                 </div>
-              </section>
+
+
             </div>
-            <!-- ./about -->
-
-          </div>
         </div>
-
-
-      </div>
-    </div>
-    <footer class="footer fixed-bottom py-1 bg-light border-top shadow-sm small">
-      <div class="container-fluid">
-        <div class="float-md-left">
-          Data Source: <a target="_blank" href="https://github.com/NovelCovid/API">NOVELCovid API</a>
-          <small class="text-muted">
-            Updated at: <span class="updated_at"></span>
-          </small>
-        </div>
-        <div class="float-md-right">
-          Developed by
-          <a target="_blank" href="https://arshovon.com/" title="Ahmedur Rahman Shovon">Ahmedur Rahman Shovon</a>
-          &
-          <a target="_blank" href="https://hmsajal.github.io/" title="Hasan Mahmud">Hasan Mahmud</a>
-        </div>
-      </div>
-    </footer>
-    <!-- ./footer -->
-  </main>
-  <!-- Load jQuery from CDN -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- Load Boostrap from CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <!-- Load data table JS from CDN -->
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-  <!-- Load jqvmap JS and World Data from CDN -->
-  <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.world.js"></script>
-  <!-- Load ChartJS Bundle with Moment JS from CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js" integrity="sha256-TQq84xX6vkwR0Qs1qH5ADkP+MvH0W+9E7TdHJsoIQiM=" crossorigin="anonymous"></script>
-  <script src="js/covid-19.js"></script>
+        <footer class="footer fixed-bottom py-1 bg-light border-top shadow-sm small">
+            <div class="container-fluid">
+                <div class="float-md-left">
+                    Data Source: <a target="_blank" href="https://github.com/NovelCovid/API">disease.sh - Open Disease Data API</a>
+                    <small class="text-muted">
+                        Updated at: <span class="updated_at"></span>
+                    </small>
+                </div>
+                <div class="float-md-right">
+                    Developed by
+                    <a target="_blank" href="https://arshovon.com/" title="Ahmedur Rahman Shovon">Ahmedur Rahman Shovon</a>
+                    &
+                    <a target="_blank" href="https://hmsajal.github.io/" title="Hasan Mahmud">Hasan Mahmud</a>
+                </div>
+            </div>
+        </footer>
+        <!-- ./footer -->
+    </main>
+    <!-- Load jQuery from CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Load Boostrap from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- Load data table JS from CDN -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <!-- Load jqvmap JS and World Data from CDN -->
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.world.js"></script>
+    <!-- Load ChartJS Bundle with Moment JS from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js" integrity="sha256-TQq84xX6vkwR0Qs1qH5ADkP+MvH0W+9E7TdHJsoIQiM=" crossorigin="anonymous"></script>
+    <script src="js/covid-19.js"></script>
 </body>
 </html>
