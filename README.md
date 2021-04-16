@@ -10,6 +10,9 @@ A data visualization project to show current situation of COVID-19 worldwide. Th
 - World map of active cases and top countries chart with most active cases.
 - World map of recovered cases and top countries chart with most recovered cases.
 - View details of a specific country.
+    - Summary information of the country.
+    - Line charts for total confirmed cases, total death cases, total recovered cases of the searched country.
+    - Bar charts for daily confirmed cases, daily death cases, daily recovered cases of the searched country.
 
 ## Dependencies
 
@@ -60,6 +63,11 @@ A data visualization project to show current situation of COVID-19 worldwide. Th
 
 ![alt Search by country](/screenshots/search_by_country.png?style=center)
 
+- Day wise cases of a country (example: confirmed cases)
+
+![alt Day wise cases of a country](/screenshots/country_wise_daily_confirmed_case.png?style=center)
+
+
 - Mobile view
 
 ![alt Mobile View](/screenshots/mobile.png?style=center)
@@ -89,7 +97,7 @@ Please contribute using [Github Flow](https://guides.github.com/introduction/flo
 
 ### Generate app folder for Hugo
 
-- Github actions workflow is added to generate an app folder which can be added to any Hugo project. The workflow file is available in [.github/workflows/main.yml](.github/workflows/main.yml) 
+- Github actions workflow is added to generate an app folder which can be added to any Hugo project. The workflow file is available in [.github/workflows/main.yml](.github/workflows/main.yml)
 - For each push to `master` branch or pull request to `master` branch the `c19` folder is updated.
 - Copy the `c19` folder to any Hugo site's `content` folder.
 - After each push to `master` branch or pull request to `master` branch, update the local branch by:
