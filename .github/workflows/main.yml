@@ -1,9 +1,9 @@
 name: Generate Hugo App Directory
 on:
   push:
-    branches: feature/daily_report
+    branches: master
   pull_request:
-    branches: feature/daily_report
+    branches: master
     
 jobs:
   build:
@@ -22,12 +22,11 @@ jobs:
           dir
           python generate_app_directory.py
           dir
-      - name: Commit report
+      - name: Commit c19 folder
         run: |
           git config --global user.name 'Ahmedur Rahman Shovon'
           git config --global user.email 'arsho@users.noreply.github.com'
           git status -s
           git add --all
           git commit -m "c19 updated"
-          git push origin feature/daily_report
-          git pull origin feature/daily_report
+          git push origin master
