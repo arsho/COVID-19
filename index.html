@@ -591,7 +591,7 @@
                                                                 First Death Case: <i class="fa fa-calendar"></i> <span id="first_death_date_searched_country"></span>
                                                             </div>
                                                             <div class="col-sm-4 mb-2 text-sm-right">
-                                                                First Recovery Case: <i class="fa fa-calendar"></i> <span id="first_recovery_date_searched_country"></span>
+                                                                First Vaccination Date: <i class="fa fa-calendar"></i> <span id="first_vaccine_date_searched_country"></span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -630,6 +630,15 @@
                                             </div>
                                             <!-- ./col-md-12 -->
                                         </div>
+                                        <div class="row mb-4">
+                                            <div class="col-md-12">
+                                                <div class="chartjs_mobile_canvas">
+                                                    <canvas id="country_vaccine_chart" class="shadow-lg border"></canvas>
+                                                    <!-- ./country_vaccine_chart -->
+                                                </div>
+                                            </div>
+                                            <!-- ./col-md-12 -->
+                                        </div>
 
                                         <!-- Country daily reports starts -->
                                         <div class="row mb-4">
@@ -659,6 +668,15 @@
                                             </div>
                                             <!-- ./col-md-12 -->
                                         </div>
+                                        <div class="row mb-4">
+                                            <div class="col-md-12">
+                                                <div class="chartjs_mobile_canvas">
+                                                    <canvas id="country_daily_vaccine_chart" class="shadow-lg border"></canvas>
+                                                    <!-- ./country_daily_vaccine_chart -->
+                                                </div>
+                                            </div>
+                                            <!-- ./col-md-12 -->
+                                        </div>
                                         <!-- Country daily reports ends -->
 
                                         <!-- ./country_search_result -->
@@ -673,7 +691,7 @@
                         <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                                 <h3>
-                                    About COVID-19 Dashboard
+                                    About C-19 Dashboard
                                 </h3>
                             </div>
 
@@ -682,12 +700,30 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="lead">
-                                                <h4>A responsive data visualization dashboard that shows current worldwide scenario of COVID-19</h4>
+                                                <h4>C-19 is a data visualization dashboard to show the current situation of COVID-19 worldwide.</h4>
                                                 <hr>
                                                 <p>
                                                     This is an open source project and we will welcome any contributions.
                                                     Source code URL: <a class="text-decoration-none" href="https://github.com/arsho/COVID-19" title="COVID-19 Source Code">https://github.com/arsho/COVID-19</a>
                                                 </p>
+
+                                                <h4>Features</h4>
+                                                <ul>
+                                                    <li>Summary of worldwide status of COVID-19 specifying number of affected countries, total cases, total deaths and total recovered cases, total tests, total deaths per million, total cases per million, and total tests per million.</li>
+                                                    <li>Sortable and instantly searchable data table of all countries.</li>
+                                                    <li>World map of confirmed cases and top countries chart with most confirmed cases.</li>
+                                                    <li>World map of death cases and top countries chart with most death cases.</li>
+                                                    <li>World map of active cases and top countries chart with most active cases.</li>
+                                                    <li>World map of recovered cases and top countries chart with most recovered cases.</li>
+                                                    <li>View details of a specific country:
+                                                        <ul>
+                                                            <li>Summary information of the country.</li>
+                                                            <li>Line charts for total confirmed cases, total death cases, total recovered cases, total vaccinations of the searched country.</li>
+                                                            <li>Bar charts for daily confirmed cases, daily death cases, daily recovered cases, daily vaccinations of the searched country.</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+
 
                                                 <h4 class="pt-3">Developers</h4>
 

@@ -3,16 +3,16 @@
 A data visualization project to show current situation of COVID-19 worldwide. This application can be accessed from: [https://arshovon.com/apps/c19/](https://arshovon.com/apps/c19/).
 
 ## Features
-- Summary of worldwide status of COVID-19 specifying number of affected countries, total cases, total deaths and total recovered cases, total tests, total deaths per million, total cases per million and total tests per million.
-- Sortable and instant searchable data table of all countries.
+- Summary of worldwide status of COVID-19 specifying number of affected countries, total cases, total deaths and total recovered cases, total tests, total deaths per million, total cases per million, and total tests per million.
+- Sortable and instantly searchable data table of all countries.
 - World map of confirmed cases and top countries chart with most confirmed cases.
 - World map of death cases and top countries chart with most death cases.
 - World map of active cases and top countries chart with most active cases.
 - World map of recovered cases and top countries chart with most recovered cases.
 - View details of a specific country.
     - Summary information of the country.
-    - Line charts for total confirmed cases, total death cases, total recovered cases of the searched country.
-    - Bar charts for daily confirmed cases, daily death cases, daily recovered cases of the searched country.
+    - Line charts for total confirmed cases, total death cases, total recovered cases, total vaccinations of the searched country.
+    - Bar charts for daily confirmed cases, daily death cases, daily recovered cases, daily vaccinations of the searched country.
 
 ## Dependencies
 

@@ -3,6 +3,7 @@ $(document).ready(function(){
     var global_summary_api_url = "https://disease.sh/v3/covid-19/all";
     var country_summary_api_base_url = "https://disease.sh/v3/covid-19/countries/";
     var country_historical_api_base_url = "https://disease.sh/v3/covid-19/historical/";
+    var country_vaccine_api_base_url = "https://disease.sh/v3/covid-19/vaccine/coverage/countries/";
 
     var corona_global_data = {};
     var total_countries = 0;
@@ -24,6 +25,7 @@ $(document).ready(function(){
     var death_case_color = "#dc3545";
     var recovered_case_color = "#28a745";
     var active_case_color = "#ffc107";
+    var vaccine_case_color = "#f26d3e";
     var summary_max_country = 6;
     var worldmap_max_country = 10;
     var default_start_color = [200, 238, 255];
@@ -83,7 +85,7 @@ $(document).ready(function(){
     function get_daily_series(data){
         var daily_data = data.slice();
         for(var i=1;i<data.length;i++){
-            daily_data[i] = data[i] - data[i-1];
+            daily_data[i] = Math.max(0, data[i] - data[i-1]);
         }
         return daily_data;
     }
@@ -266,9 +268,24 @@ $(document).ready(function(){
                     display: true,
                     text: title+" in "+country
                 },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            userCallback: function(value, index, values) {
+                                return value.toLocaleString();
+                            }
+                        }
+                    }]
+                },
                 tooltips: {
                     mode: 'index',
                     intersect: false,
+                    callbacks: {
+    					label: function(tooltipItem, data) {
+    						var value = data.datasets[0].data[tooltipItem.index];
+    						return value.toLocaleString();
+    					}
+        			}
                 },
                 hover: {
                     mode: 'average',
@@ -305,9 +322,24 @@ $(document).ready(function(){
                     display: true,
                     text: title
                 },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            userCallback: function(value, index, values) {
+                                return value.toLocaleString();
+                            }
+                        }
+                    }]
+                },
                 tooltips: {
                     mode: 'index',
                     intersect: false,
+                    callbacks: {
+    					label: function(tooltipItem, data) {
+    						var value = data.datasets[0].data[tooltipItem.index];
+    						return value.toLocaleString();
+    					}
+        			}
                 },
                 hover: {
                     mode: 'average',
@@ -325,14 +357,18 @@ $(document).ready(function(){
     function load_searched_country_data(country_code){
         var country_summary_api_url = country_summary_api_base_url+country_code;
         var country_historical_api_url = country_historical_api_base_url+country_code+"?lastdays=1000";
+        var country_vaccine_api_url = country_vaccine_api_base_url+country_code+"?lastdays=1000";
         var chart_labels = [];
+        var vaccine_chart_labels = [];
         var confirmed_series = [];
         var death_series = [];
         var recovered_series = [];
+        var vaccine_series = [];
         var found_first_case_date = false;
         var found_first_death_date = false;
         var found_first_recovery_data = false;
-
+        var found_first_vaccine_data = false;
+        var first_confirmed_case_index = 0;
 
         /* Fetching the sumamry data of the searched country */
         $.getJSON(country_summary_api_url).done(function(data){
@@ -385,7 +421,7 @@ $(document).ready(function(){
             var first_death_date_searched_country = null;
             var first_recovery_date_searched_country = null;
             // We will show the chart only after the first confirmed case date
-            var first_confirmed_case_index = 0;
+
             var counter = 0;
 
             $.each(cases_by_date_searched_country, function(key, value){
@@ -417,7 +453,7 @@ $(document).ready(function(){
 
             $("#first_case_date_searched_country").html(first_case_date_searched_country);
             $("#first_death_date_searched_country").html(first_death_date_searched_country);
-            $("#first_recovery_date_searched_country").html(first_recovery_date_searched_country);
+            
 
             // Strip the series and chart labels to have data only after first confirmed case date
             chart_labels.splice(0, first_confirmed_case_index);
@@ -438,6 +474,32 @@ $(document).ready(function(){
             set_single_dataset_bar_chart("country_daily_recovered_chart", "Daily Recovered Cases in "+country_name_searched_country, "Daily Recovered Cases", recovered_case_color, "Date", "Number of recovered cases", chart_labels, daily_recovered_series);
 
         });
+
+        /* Fetching the time series data of vaccine coverage of the searched country */
+        $.getJSON(country_vaccine_api_url).done(function(data){
+            var country_name_searched_country = data.country;
+            var vaccine_by_date_searched_country = data.timeline;
+            var first_vaccine_date_searched_country = null;
+
+            $.each(vaccine_by_date_searched_country, function(key, value){
+                vaccine_chart_labels.push(get_formatted_date(key));
+                vaccine_series.push(value);
+                if(found_first_vaccine_data==false && value>0){
+                    first_vaccine_date_searched_country = get_formatted_date(key);
+                    found_first_vaccine_data = true;
+                }
+            });
+
+            $("#first_vaccine_date_searched_country").html(first_vaccine_date_searched_country);
+
+            var daily_vaccine_series = get_daily_series(vaccine_series.slice());
+
+            set_country_single_chart(country_name_searched_country, "country_vaccine_chart", "Total Vaccination", "Total Vaccination", vaccine_case_color, "Date", "Number of vaccinations", vaccine_chart_labels, vaccine_series);
+            set_single_dataset_bar_chart("country_daily_vaccine_chart", "Daily Vaccinations in "+country_name_searched_country, "Daily Vaccinations", vaccine_case_color, "Date", "Number of vaccinations", vaccine_chart_labels, daily_vaccine_series);
+
+        });
+
+
         $("#country_search_result").fadeOut("slow");
         $("#country_search_result").fadeIn("slow");
     }
