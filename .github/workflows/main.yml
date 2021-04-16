@@ -2,10 +2,10 @@ name: Generate Hugo App Directory
 
 on:
   push:
-    branches: master
+    branches: $default-branch
   pull_request:
-    branches: master
-    
+    branches: $default-branch
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,4 +31,4 @@ jobs:
           git status -s
           git add --all
           git commit -m "Pushed updated c19 folder"
-          git push origin master
+          git push origin $default-branch
