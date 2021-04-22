@@ -102,7 +102,7 @@ $(document).ready(function(){
     }
 
     function get_country_flag(country_code){
-        return "https://flagcdn.com/h20/"+country_code.toLowerCase()+".png";
+        return "https://flagcdn.com/"+country_code.toLowerCase()+".svg";
     }
 
     function get_sorted_countries_by_criteria(unsorted_countries, sort_criteria, max_number_of_elements){
@@ -577,7 +577,7 @@ $(document).ready(function(){
                 }
                 country_flag = get_country_flag(item.countryInfo.iso2.toLowerCase());
             }
-            country_row += "<img class='flag' src='"+country_flag+"' alt='"+item.country+"'/>";
+            country_row += "<img class='img-thumbnail flag-30' src='"+country_flag+"' alt='"+item.country+"'/>";
             country_row += "</td>";
 
             country_row += "<td>";
