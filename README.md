@@ -23,6 +23,7 @@ A data visualization project to show current situation of COVID-19 worldwide. Th
 - [ChartJS v2.9.3 bundled build including Moment.js](https://www.chartjs.org/)
 - [Font Awesome Free v5.13.0](https://fontawesome.com)
 - [Google Web Font: Source Sans Pro](https://fonts.google.com/specimen/Source+Sans+Pro)
+- [Flagpedia](https://flagpedia.net)
 
 ## Installation
 

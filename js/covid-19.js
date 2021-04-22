@@ -102,7 +102,7 @@ $(document).ready(function(){
     }
 
     function get_country_flag(country_code){
-        return "https://www.countryflags.io/"+country_code+"/shiny/64.png";
+        return "https://flagcdn.com/h20/"+country_code+".png";
     }
 
     function get_sorted_countries_by_criteria(unsorted_countries, sort_criteria, max_number_of_elements){
@@ -453,7 +453,7 @@ $(document).ready(function(){
 
             $("#first_case_date_searched_country").html(first_case_date_searched_country);
             $("#first_death_date_searched_country").html(first_death_date_searched_country);
-            
+
 
             // Strip the series and chart labels to have data only after first confirmed case date
             chart_labels.splice(0, first_confirmed_case_index);
