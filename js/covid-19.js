@@ -102,7 +102,7 @@ $(document).ready(function(){
     }
 
     function get_country_flag(country_code){
-        return "https://flagcdn.com/h20/"+country_code+".png";
+        return "https://flagcdn.com/h20/"+country_code.toLowerCase()+".png";
     }
 
     function get_sorted_countries_by_criteria(unsorted_countries, sort_criteria, max_number_of_elements){
